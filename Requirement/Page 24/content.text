@@ -1,0 +1,5 @@
+4.5 Xem chi tiết
+- Tất cả các side panel dưới đây đều đã được FE dựng sẵn ở web chuyên gia → Chỉ cần tái sử dụng lại ở web admin này
+- Màn hình xem chi tiết để duyệt bao gồm Approval + Data correction (tức admin được quyền xét duyệt/từ chối duyệt và chỉnh sửa nếu cần) – Button chính: xác nhận duyệt/ từ chối duyệt
+a. Chăm sóc tại nhà
+<<[24.1.png]>>

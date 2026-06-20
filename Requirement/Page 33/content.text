@@ -1,0 +1,5 @@
+4.6 Action duyệt
+•Nếu từ chối duyệt thì phải nhập thêm note lý do chi tiết
+•Status ở mỗi tab là status hiện tại của hạng mục này trên web chuyên gia của user, khi admin duyệt/từ chối duyệt thì ở page này của admin/user đều cập nhật theo status mới (Đã xét duyệt / Từ chối duyệt)
+<<[33.1.png]>>
+<<[33.2.png]>>

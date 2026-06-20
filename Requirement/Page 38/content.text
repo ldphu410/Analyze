@@ -1,0 +1,6 @@
+7. QUẢN LÝ DANH MỤC KỸ THUẬT HỆ THỐNG
+7.1 Danh mục kỹ thuật hệ thống (Xem bảng chi tiết full bên dưới)
+- Dropdown Nhóm kỹ thuật ở trên là nguồn dữ liệu duy nhất của page. Bảng bên dưới luôn hiển thị dữ liệu của nhóm đang chọn.
+- Luồng: Chọn nhóm kỹ thuật → Upload file excel → Hệ thống validate file → Mở side panel preview dữ liệu → Owner kiểm tra → Bấm Lưu cập nhật → Tắt side panel → Bảng chính refresh theo dữ liệu vừa lưu
+<<[38.1.png]>>
+<<[38.2.png]>>

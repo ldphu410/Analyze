@@ -1,0 +1,8 @@
+3.5 Các side panel xem chi tiết
+Tất cả các side panel dưới đây đều đã được FE dựng sẵn ở web chuyên gia → Chỉ cần tái sử dụng lại ở web admin này (dạng read-only)
+•Ẩn các button
+•Ẩn các section không cần thiết trong tab Bảo mật
+•Bỏ icon xóa ở các ảnh
+•Các field dạng read-only, không sửa được
+a. Bảo mật
+<<[9.1.png]>>

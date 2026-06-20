@@ -1,0 +1,10 @@
+UI WEB ADMIN Y VIET
+A. LƯU Ý CHUNG:
+- FE thực hiện tiếp quản từ source cũ đã có
+- Giao diện web admin được xây dựng mới, tái sử dụng cấu trúc UI tương tự hệ thống Web chuyên gia mà Y VIET đã và đang thực hiện
+- Các component, bố cục, table, popup (modal), side panel đều đã có sẵn. Chỉ cần tái sử dụng
+- Các action xóa đều có popup xóa để xác nhận (đã có UI)
+B. GIAO DIỆN WEB ADMIN (PHASE 1)
+1. QUẢN LÝ QTV
+1.1 Màn hình Danh sách quản trị viên (Xem bảng full ở mục 1.2 thuộc page 2)
+<<[1.1.png]>>
