@@ -30,7 +30,9 @@ Hệ thống **Web Admin** là một nền tảng quản lý toàn diện dành 
 ---
 
 ## 📂 Danh Sách Các Module
-👉 **[Xem Tài Liệu Đầy Đủ Về Modules và User Story Tại Folder Result](./Result)**
+👉 **[Xem Tài Liệu Đầy Đủ Về Overview Requirement](./Result/modules)**
+
+👉 **[Xem Tài Liệu Đầy Đủ Về User Stories](./Result/UserStory)**
 
 | # | Module | Mô Tả | Epic | Story |
 |---|--------|-------|------|-------|
