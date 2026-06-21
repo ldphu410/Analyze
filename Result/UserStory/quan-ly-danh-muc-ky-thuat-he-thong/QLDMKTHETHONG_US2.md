@@ -18,7 +18,6 @@ Then the UI shows preview rows và error messages per row
 - Error tooltip per row
 
 #### Frontend Considerations
-
 - State management: upload file, validation status, preview rows
 - Validation: display row-level errors and file-level errors
 - Error handling: show upload/validation failure alerts
@@ -30,12 +29,19 @@ Then the UI shows preview rows và error messages per row
 - Upload implies client/server validation and row-level error mapping
 - Need confirm before closing preview if upload is unsaved
 
+### Open Questions
+
+- Size of files
+- Structure data need to follow standard
+- How to identify the mismatch field
+- The rules for error detecting
+
 #### Dependency
 
 - Backend API: POST /api/technical-categories/upload
 
 #### Story Point
 
-L
+XL
 
 ---
