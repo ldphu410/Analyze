@@ -187,3 +187,49 @@ And rejection submits only when the note is provided
 #### Story Point
 
 M
+
+---
+
+#### Story 2.3
+
+As a Web Admin
+I want to view details for both facility and service package approval requests in the same panel
+So that I can inspect the correct object-specific fields for each approval type
+
+#### Acceptance Criteria
+
+Given the admin opens a facility approval request detail
+When the detail panel loads
+Then it shows hồ sơ cơ sở-specific fields and metadata
+
+Given the admin opens a service package approval request detail
+When the detail panel loads
+Then it shows gói dịch vụ-specific fields and package-related data
+
+#### UI Scope
+
+- Detail side panel or panel view
+- Dynamic field groups per approval type
+- Read-only object-specific sections
+
+#### Frontend Considerations
+
+- State management: selected request, requestType, detail mapping
+- Validation: none beyond display and field mapping
+- Error handling: detail load error with retry
+- Reusability: same panel structure with requestType-driven content
+- Accessibility: clear labels for object-specific sections
+
+#### Hidden Requirements
+
+- Detail panel must map requestType to the correct field layout
+- Package approval and facility approval use the same panel but different section sets
+
+#### Dependency
+
+- Backend API: GET /api/approval-requests/{requestId}
+- Other FE stories: list base data
+
+#### Story Point
+
+S
