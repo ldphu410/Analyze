@@ -67,11 +67,18 @@ Quản lý tài khoản quản trị viên (QTV) trên Web Admin: danh sách, ch
 ## Luồng nghiệp vụ
 
 ```mermaid
-flowchart LR
-  List[Danh sách QTV] --> Detail[Chi tiết]
-  Detail --> Edit[Thêm / Sửa]
-  Detail --> Delete[Xóa]
-  Edit --> Role[Phân quyền]
+flowchart TD
+  List[Danh sách QTV] --> Search[Tìm kiếm / Lọc]
+  List --> Add[Thêm mới]
+  List --> Edit[Sửa]
+  List --> Delete[Xóa]
+  List --> Detail[Xem chi tiết]
+  Add --> Modal[Modal form]
+  Edit --> Modal
+  Modal --> Role[Gán vai trò + xem trước quyền]
+  Modal --> Save[Lưu]
+  Delete --> Confirm[Popup xác nhận]
+  Confirm --> Save
 ```
 
 ## Phân tích khoảng trống

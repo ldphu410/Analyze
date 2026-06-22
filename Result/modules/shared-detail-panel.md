@@ -66,15 +66,28 @@ Thư viện side panel tái sử dụng từ **Web Chuyên Gia**, dùng chung ch
 | DetailPanelConfig | hiddenSections | Section ẩn theo mode/ngữ cảnh |
 | DetailPanelData | fields | Dữ liệu hiển thị (từ API) |
 
-## Phụ thuộc module
+## Sơ đồ phụ thuộc
 
 ```mermaid
 flowchart LR
+  WCG[Panel gốc<br/>Web Chuyên Gia]
   SDP[Side Panel dùng chung]
   QTK[Quản lý Tài khoản]
   PDHS[Phê duyệt Hồ sơ]
-  SDP --> QTK
-  SDP --> PDHS
+  WCG -.->|tái sử dụng| SDP
+  QTK -->|phụ thuộc| SDP
+  PDHS -->|phụ thuộc| SDP
+```
+
+## Sơ đồ chế độ panel
+
+```mermaid
+flowchart TD
+  SDP[Side Panel dùng chung]
+  SDP --> ViewOnly[mode: view-only<br/>Page 9–19]
+  SDP --> Approval[mode: approval<br/>Page 24–32]
+  ViewOnly --> QTK[Quản lý Tài khoản]
+  Approval --> PDHS[Phê duyệt Hồ sơ]
 ```
 
 ## Phân tích khoảng trống

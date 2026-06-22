@@ -65,6 +65,28 @@ Page 10–19 là **mục 3.5** (side panel a→k) thuộc module này — không
 3. Có cần tìm kiếm/lọc theo trạng thái?
 4. Field nào hiển thị trên từng panelType?
 
+## Luồng nghiệp vụ
+
+```mermaid
+flowchart TD
+  List[Danh sách tài khoản] --> Menu[Menu theo trạng thái duyệt]
+  Menu --> Reject[Xem lý do từ chối]
+  Menu --> Lock[Khóa / Tạm khóa]
+  Menu --> Detail[Xem chi tiết]
+  Lock --> Confirm[Popup xác nhận]
+  Detail --> Panel[Side Panel dùng chung<br/>mode: view-only]
+  Panel --> Types[11 loại panel a→k]
+```
+
+## Phụ thuộc module
+
+```mermaid
+flowchart LR
+  QTK[Quản lý Tài khoản]
+  SDP[Side Panel dùng chung]
+  QTK --> SDP
+```
+
 ## Phân tích khoảng trống
 
 - Chưa rõ nghiệp vụ khóa/tạm khóa.

@@ -59,8 +59,11 @@ Quản lý danh mục lớn: bảng danh sách và modal thao tác (thêm/sửa)
 ## Luồng nghiệp vụ
 
 ```mermaid
-flowchart LR
-  List[Danh sách danh mục] --> Modal[Modal thao tác]
+flowchart TD
+  List[Danh sách danh mục] --> Add[Thêm mới]
+  List --> Edit[Sửa]
+  Add --> Modal[Modal thao tác]
+  Edit --> Modal
   Modal --> Save[Lưu]
 ```
 

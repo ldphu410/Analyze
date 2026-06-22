@@ -2,6 +2,99 @@
 
 > Gộp Page 10–19 vào Quản lý Tài khoản; tách Side Panel dùng chung để khử trùng estimate.
 
+## Sơ đồ tổng quan hệ thống
+
+### Bản đồ module theo Page (Phase 1)
+
+```mermaid
+flowchart LR
+  subgraph P1["Page 1–3"]
+    QTV[Quản lý QTV]
+  end
+  subgraph P2["Page 4–5"]
+    BN[Quản lý Banner]
+  end
+  subgraph P3["Page 6–19"]
+    TK[Quản lý Tài khoản]
+  end
+  subgraph P4["Page 20–33"]
+    PD[Phê duyệt Hồ sơ & Gói DV]
+  end
+  subgraph P5["Page 34–35"]
+    DM[Quản lý Danh mục]
+  end
+  subgraph P6["Page 36–37"]
+    NK[Quản lý Nhóm kỹ thuật]
+  end
+  subgraph P7["Page 38–43"]
+    DMKT[Quản lý DMKT Hệ thống]
+  end
+
+  P1 --> P2 --> P3 --> P4 --> P5 --> P6 --> P7
+```
+
+> Thứ tự Page phản ánh cấu trúc requirement từ khách — không phải thứ tự triển khai.
+
+### Lớp dùng chung & phụ thuộc giữa các module
+
+```mermaid
+flowchart TD
+  WCG[Web Chuyên Gia<br/>UI component gốc]
+
+  subgraph Shared["Lớp dùng chung"]
+    SDP[Side Panel dùng chung<br/>~4,0 ngày]
+  end
+
+  subgraph Account["Quản lý người dùng"]
+    QTV[Quản lý QTV<br/>Page 1–3]
+    TK[Quản lý Tài khoản<br/>Page 6–19]
+    PD[Phê duyệt<br/>Page 20–33]
+  end
+
+  subgraph Content["Nội dung & cấu hình"]
+    BN[Quản lý Banner<br/>Page 4–5]
+    CAT[Quản lý Danh mục<br/>Page 34–35]
+    NK[Quản lý Nhóm kỹ thuật<br/>Page 36–37]
+    DMKT[Quản lý DMKT<br/>Page 38–43]
+  end
+
+  WCG -.->|tái sử dụng UI| QTV
+  WCG -.->|tái sử dụng UI| TK
+  WCG -.->|tái sử dụng UI| PD
+  WCG -.->|panel gốc| SDP
+
+  TK -->|mode: view-only| SDP
+  PD -->|mode: approval| SDP
+
+  CAT -.->|template UI| NK
+  NK -->|dropdown nguồn| DMKT
+
+  PD -.->|đồng bộ trạng thái| WCG
+```
+
+### Luồng dữ liệu chính (tóm tắt)
+
+```mermaid
+flowchart TD
+  Admin([Admin Web Admin])
+
+  Admin --> QTV
+  Admin --> BN
+  Admin --> TK
+  Admin --> PD
+  Admin --> CAT
+  Admin --> DMKT
+
+  TK -->|xem chi tiết read-only| UserData[(Dữ liệu user)]
+  PD -->|duyệt / từ chối| UserData
+  PD -->|cập nhật status| UserPortal[Web Chuyên gia<br/>phía user]
+
+  DMKT -->|upload Excel| ConfigData[(DMKT hệ thống)]
+  ConfigData --> UserPortal
+```
+
+---
+
 ## Danh sách Module
 
 ### 0. Side Panel dùng chung (Cross-cutting)

@@ -63,9 +63,13 @@ Quản lý banner hiển thị trên **4 nền tảng** `[ĐÃ XÁC NHẬN]` và
 ## Luồng nghiệp vụ
 
 ```mermaid
-flowchart LR
-  List[Danh sách banner] --> Update[Cập nhật]
-  Update --> Save[Lưu]
+flowchart TD
+  List[Danh sách banner<br/>4 nền tảng] --> Select[Chọn banner]
+  Select --> Form[Form chỉnh sửa]
+  Form --> Validate{Kiểm tra file ảnh}
+  Validate -->|Không hợp lệ| Error[Hiển thị lỗi]
+  Validate -->|Hợp lệ| Preview[Preview]
+  Preview --> Save[Lưu]
 ```
 
 ## Phân tích khoảng trống
