@@ -1,44 +1,46 @@
 # User Story: QLB_US2
 
-As a Web Admin
-I want to edit banner content in a modal or form
-So that I can update image, title, link, và trạng thái nhanh chóng
+| Trường | Giá trị |
+|--------|---------|
+| **Module** | Quản lý Banner |
+| **Epic** | 2 — Cập nhật banner |
+| **Pages** | 5 |
+| **REQ IDs** | REQ-BN-002 |
+| **Điểm ước lượng** | M (≈2–3 ngày) |
 
-#### Acceptance Criteria
+## Câu chuyện
 
-Given the admin clicks Edit on a banner
-When the edit screen appears
-Then form fields are shown for image, title, link, platform, và status
-And saving submits the updated banner data
+**Với vai trò** Quản trị Web Admin  
+**Tôi muốn** chỉnh sửa nội dung banner qua form/modal  
+**Để** cập nhật ảnh, tiêu đề, link và trạng thái nhanh chóng
 
-#### UI Scope
+## Tiêu chí chấp nhận
 
-- Edit button
-- Edit modal/form
-- Image uploader
-- Input fields for title và link
-- Save/Cancel buttons
+- **Cho trước** admin nhấn Chỉnh sửa trên một banner  
+- **Khi** màn hình chỉnh sửa mở ra  
+- **Thì** hiển thị form với các trường: ảnh, tiêu đề, link, nền tảng, trạng thái  
+- **Và** lưu thành công cập nhật dữ liệu banner  
+- **Và** hiển thị thông báo thành công sau khi lưu
 
-#### Frontend Considerations
+## Phạm vi giao diện
 
-- State management: form state, upload state
-- Validation: required image/url format nếu cần
-- Error handling: field-level errors và server error message
-- Reusability: image upload component
-- Accessibility: labels, focus management
+- Nút Chỉnh sửa
+- Modal / form chỉnh sửa
+- Upload ảnh
+- Các trường tiêu đề, link
+- Nút Lưu / Hủy
 
-#### Hidden Requirements
+## Lưu ý triển khai
 
-- Need preview support for multiple platforms
-- Need success notification khi cập nhật thành công
+- Tái sử dụng component upload ảnh  
+- Hỗ trợ preview theo từng nền tảng `[GIẢ ĐỊNH]`  
+- Hiển thị lỗi validation theo từng trường
 
-#### Dependency
+## Phụ thuộc
 
-- Backend API: PUT /api/banners/{bannerId}
-- Permission system: update banner permission
+- API: `PUT /api/banners/{bannerId}` `[CHƯA RÕ]`
+- QLB_US1 (danh sách banner)
 
-#### Story Point
+## Ngoài phạm vi
 
-M
-
----
+- Lên lịch hiển thị banner theo thời gian

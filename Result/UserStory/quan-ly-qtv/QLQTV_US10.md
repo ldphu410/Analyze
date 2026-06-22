@@ -1,41 +1,41 @@
 # User Story: QLQTV_US10
 
-As a Web Admin
-I want clear loading and error states on list and detail views
-So that I understand when data is being fetched or has failed
+| Trường | Giá trị |
+|--------|---------|
+| **Module** | Quản lý QTV |
+| **Epic** | 5 — Thao tác chung |
+| **Pages** | 1–3 |
+| **REQ IDs** | — |
+| **Điểm ước lượng** | S (≈0,5–1,5 ngày) |
 
-#### Acceptance Criteria
+## Câu chuyện
 
-Given the list or detail view is fetching data
-When the request is pending
-Then a loading skeleton or spinner is shown
-And if the request fails, an inline error message with retry option displays
+**Với vai trò** Quản trị Web Admin  
+**Tôi muốn** thấy rõ trạng thái đang tải dữ liệu và khi có lỗi  
+**Để** biết hệ thống đang xử lý hay đã gặp sự cố
 
-#### UI Scope
+## Tiêu chí chấp nhận
+
+- **Cho trước** danh sách hoặc chi tiết đang tải dữ liệu  
+- **Khi** yêu cầu chưa hoàn tất  
+- **Thì** hiển thị loading (skeleton hoặc spinner)  
+- **Và** nếu thất bại, hiển thị thông báo lỗi kèm nút thử lại
+
+## Phạm vi giao diện
 
 - Loading indicator
-- Error banner/message
-- Retry button
+- Thông báo lỗi
+- Nút Thử lại
 
-#### Frontend Considerations
+## Lưu ý triển khai
 
-- State management: loading and error states for list/detail/modal
-- Validation: none beyond request state
-- Error handling: centralized error display strategy
-- Reusability: use shared loading/error components
-- Accessibility: announce loading and error states
+- Tái sử dụng component loading/error dùng chung  
+- Phân biệt trạng thái: tải danh sách, tải chi tiết, gửi form
 
-#### Hidden Requirements
+## Phụ thuộc
 
-- Need retry patterns for failed requests
-- Need distinct states for list load, detail load, and form submission
+- Các API danh sách và chi tiết quản trị viên
 
-#### Dependency
+## Ngoài phạm vi
 
-- Backend API endpoints for user list/detail
-
-#### Story Point
-
-S
-
----
+- Retry tự động không giới hạn

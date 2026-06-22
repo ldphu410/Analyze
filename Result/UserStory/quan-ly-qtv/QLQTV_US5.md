@@ -1,43 +1,45 @@
 # User Story: QLQTV_US5
 
-As a Web Admin
-I want to open a create admin modal
-So that I can add a new administrator without leaving the list page
+| Trường | Giá trị |
+|--------|---------|
+| **Module** | Quản lý QTV |
+| **Epic** | 3 — Thêm quản trị viên |
+| **Pages** | 2 |
+| **REQ IDs** | REQ-QTV-004 |
+| **Điểm ước lượng** | M (≈2–3 ngày) |
 
-#### Acceptance Criteria
+## Câu chuyện
 
-Given the admin is on the Admin User List page
-When they click Add Admin
-Then a modal opens with input fields for name, email, roles, and status
+**Với vai trò** Quản trị Web Admin  
+**Tôi muốn** mở form thêm quản trị viên mới  
+**Để** tạo tài khoản mà không cần rời khỏi trang danh sách
 
-#### UI Scope
+## Tiêu chí chấp nhận
 
-- Add Admin button
-- Modal
-- Input fields: Name, Email, Roles, Status
-- Save/Cancel buttons
+- **Cho trước** admin đang ở trang Danh sách quản trị viên  
+- **Khi** nhấn "Thêm quản trị viên"  
+- **Thì** mở modal với các trường: tên, email, vai trò (role), trạng thái  
+- **Và** có nút Lưu / Hủy  
+- **Và** hiển thị lỗi validation nếu thiếu trường bắt buộc hoặc email không hợp lệ
 
-#### Frontend Considerations
+## Phạm vi giao diện
 
-- State management: form state, modal visibility, submission state
-- Validation: required fields, email format, unique email/name client-side hints
-- Error handling: show field-level validation errors and server error messages
-- Reusability: modal and form controls from existing library
-- Accessibility: focus management, labels, keyboard support
+- Nút Thêm quản trị viên
+- Modal form
+- Các trường nhập liệu
+- Nút Lưu / Hủy
 
-#### Hidden Requirements
+## Lưu ý triển khai
 
-- Edit form implies dirty-state detection and unsaved changes warning
-- Role assignment implies role loading API
-- Need server-validated uniqueness and API error mapping
+- Tái sử dụng modal và form từ thư viện UI hiện có  
+- Kiểm tra email trùng lặp `[GIẢ ĐỊNH]`  
+- Cảnh báo khi đóng modal còn dữ liệu chưa lưu
 
-#### Dependency
+## Phụ thuộc
 
-- Backend API: GET /api/roles, POST /api/admin-users
-- Permission system: create admin permission
+- API: `GET /api/roles`, `POST /api/admin-users` `[CHƯA RÕ]`
+- Quyền: tạo quản trị viên
 
-#### Story Point
+## Ngoài phạm vi
 
-M
-
----
+- Gửi email mời kích hoạt tài khoản

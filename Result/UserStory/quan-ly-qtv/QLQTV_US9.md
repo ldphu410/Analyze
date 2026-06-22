@@ -1,40 +1,41 @@
 # User Story: QLQTV_US9
 
-As a Web Admin
-I want to see a confirmation modal before deleting an admin user
-So that I avoid accidental deletions
+| Trường | Giá trị |
+|--------|---------|
+| **Module** | Quản lý QTV |
+| **Epic** | 5 — Thao tác chung |
+| **Pages** | 2 |
+| **REQ IDs** | BR-QTV-001 |
+| **Điểm ước lượng** | S (≈0,5–1,5 ngày) |
 
-#### Acceptance Criteria
+## Câu chuyện
 
-Given the admin selects Delete from an action menu
-When they confirm the delete action
-Then a confirmation modal appears with the admin name
-And delete proceeds only after confirmation
+**Với vai trò** Quản trị Web Admin  
+**Tôi muốn** xác nhận trước khi xóa quản trị viên  
+**Để** tránh xóa nhầm tài khoản
 
-#### UI Scope
+## Tiêu chí chấp nhận
 
-- Action menu
-- Confirmation modal
+- **Cho trước** admin chọn "Xóa" từ menu thao tác  
+- **Khi** thao tác xóa được kích hoạt  
+- **Thì** hiển thị popup xác nhận kèm tên quản trị viên  
+- **Và** chỉ thực hiện xóa sau khi admin xác nhận `[ĐÃ XÁC NHẬN]`
 
-#### Frontend Considerations
+## Phạm vi giao diện
 
-- State management: delete candidate, modal visibility, delete state
-- Validation: confirm button only active after explicit action
-- Error handling: show delete failure message
-- Reusability: confirmation modal component
-- Accessibility: modal focus trap and button labels
+- Menu thao tác → Xóa
+- Popup xác nhận
 
-#### Hidden Requirements
+## Lưu ý triển khai
 
-- Delete action implies confirmation modal and possibly permission gating
+- Tái sử dụng popup xác nhận từ Web Chuyên Gia `[ĐÃ XÁC NHẬN]`  
+- Hiển thị thông báo lỗi nếu xóa thất bại
 
-#### Dependency
+## Phụ thuộc
 
-- Backend API: DELETE /api/admin-users/{adminId}
-- Permission system: delete admin permission
+- API: `DELETE /api/admin-users/{adminId}` `[CHƯA RÕ]`
+- Quyền: xóa quản trị viên
 
-#### Story Point
+## Ngoài phạm vi
 
-S
-
----
+- Xóa hàng loạt (bulk delete)

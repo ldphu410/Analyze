@@ -1,37 +1,43 @@
 # User Story: QLDMKTHETHONG_US4
 
-As a Web Admin
-I want to edit technical category rows in the main table
-So that I can correct data quickly after review
+| Trường | Giá trị |
+|--------|---------|
+| **Module** | Quản lý DMKT Hệ thống |
+| **Epic** | 3 — Chỉnh sửa trên bảng chính |
+| **Pages** | 42, 43 |
+| **REQ IDs** | REQ-DMKT-006, REQ-DMKT-007, REQ-DMKT-008 |
+| **Điểm ước lượng** | M (≈2–3 ngày) |
 
-#### Acceptance Criteria
+## Câu chuyện
 
-Given the admin opens a technical group table
-When they edit a row
-Then inline or modal editing becomes available and saving updates the row
+**Với vai trò** Quản trị Web Admin  
+**Tôi muốn** chỉnh sửa dòng DMKT trực tiếp trên bảng chính  
+**Để** điều chỉnh dữ liệu nhanh sau khi đã xem xét
 
-#### UI Scope
+## Tiêu chí chấp nhận
 
-- Table edit controls
-- Inline edit fields or modal
+- **Cho trước** admin đang xem bảng DMKT của một nhóm  
+- **Khi** chỉnh sửa một dòng (inline hoặc qua modal)  
+- **Thì** có thể cập nhật và lưu thay đổi  
+- **Và** bảng refresh sau khi lưu thành công `[ĐÃ XÁC NHẬN]`  
+- **Và** hiển thị lỗi nếu lưu thất bại
 
-#### Frontend Considerations
+## Phạm vi giao diện
 
-- State management: edit row state, save state
-- Validation: required fields and data types
-- Error handling: show save error per row
-- Reusability: edit controls from shared table library
-- Accessibility: editable row keyboard support
+- Chỉnh sửa trên bảng (inline hoặc modal)
+- Cột thao tác
+- Nút Lưu cập nhật (sau upload)
 
-#### Hidden Requirements
+## Lưu ý triển khai
 
-- Table edit implies validation rules per field and safe save rollback
+- Trường nào được phép sửa cần khách xác nhận `[CHƯA RÕ]`  
+- Tái sử dụng control chỉnh sửa từ thư viện bảng hiện có
 
-#### Dependency
+## Phụ thuộc
 
-- Backend API: PUT /api/technical-categories/{id}
-- Other FE stories: group selector and table load
+- API: `PUT /api/technical-categories/{id}` `[CHƯA RÕ]`
+- QLDMKTHETHONG_US1 (bảng cơ bản)
 
-#### Story Point
+## Ngoài phạm vi
 
-M
+- Lịch sử thay đổi từng dòng

@@ -1,39 +1,43 @@
 # User Story: QLTK_US4
 
-As a Web Admin
-I want to confirm before locking or temporarily locking an account
-So that I avoid unintended account restrictions
+| Trường | Giá trị |
+|--------|---------|
+| **Module** | Quản lý Tài khoản |
+| **Epic** | 4 — Khóa tài khoản |
+| **Pages** | 8 |
+| **REQ IDs** | REQ-ACC-004 |
+| **Điểm ước lượng** | S (≈0,5–1,5 ngày) |
 
-#### Acceptance Criteria
+## Câu chuyện
 
-Given the admin chooses Lock or Temporary Lock
-When they confirm the action
-Then a confirmation modal appears and the action executes only after confirm
+**Với vai trò** Quản trị Web Admin  
+**Tôi muốn** xác nhận trước khi khóa hoặc tạm khóa tài khoản  
+**Để** tránh thao tác nhầm ảnh hưởng người dùng
 
-#### UI Scope
+## Tiêu chí chấp nhận
 
-- Lock/Temporary Lock action buttons
-- Confirmation modal
-- Confirmation/cancel buttons
+- **Cho trước** admin chọn "Khóa" hoặc "Tạm khóa" từ menu thao tác  
+- **Khi** nhấn xác nhận trong popup  
+- **Thì** thực hiện thao tác khóa và refresh danh sách  
+- **Và** hủy đóng popup mà không thực hiện gì  
+- **Và** popup xác nhận hiển thị trước khi thực hiện `[ĐÃ XÁC NHẬN]`
 
-#### Frontend Considerations
+## Phạm vi giao diện
 
-- State management: action candidate, modal visibility
-- Validation: require explicit confirm
-- Error handling: show action failure
-- Reusability: confirmation modal component
-- Accessibility: focus trap and clear button labels
+- Mục Khóa / Tạm khóa trên menu
+- Popup xác nhận
 
-#### Hidden Requirements
+## Lưu ý triển khai
 
-- Need clear semantics between lock and temporary lock
-- Need action confirmation to prevent accidental execution
+- Phân biệt rõ nội dung popup Khóa vs Tạm khóa `[CHƯA RÕ]`  
+- Tái sử dụng popup xác nhận hiện có
 
-#### Dependency
+## Phụ thuộc
 
-- Backend API: POST /api/user-accounts/{userId}/lock
-- Permission system: lock account permission
+- API: `POST /api/user-accounts/{userId}/lock` `[CHƯA RÕ]`
+- Quyền: khóa tài khoản
 
-#### Story Point
+## Ngoài phạm vi
 
-S
+- Tự động mở khóa theo thời gian
+- Lịch sử thao tác khóa

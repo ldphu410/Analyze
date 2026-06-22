@@ -1,40 +1,44 @@
 # User Story: QLQTV_US6
 
-As a Web Admin
-I want to edit an existing admin user in the same modal pattern
-So that I can update their roles or status quickly
+| Trường | Giá trị |
+|--------|---------|
+| **Module** | Quản lý QTV |
+| **Epic** | 3 — Chỉnh sửa quản trị viên |
+| **Pages** | 2 |
+| **REQ IDs** | REQ-QTV-004 |
+| **Điểm ước lượng** | M (≈2–3 ngày) |
 
-#### Acceptance Criteria
+## Câu chuyện
 
-Given the admin opens the Edit action for an admin user
-When the edit modal appears
-Then it pre-fills current user values and allows updates
-And saving submits changes to the backend
+**Với vai trò** Quản trị Web Admin  
+**Tôi muốn** chỉnh sửa thông tin quản trị viên qua cùng một form modal  
+**Để** cập nhật vai trò hoặc trạng thái nhanh chóng
 
-#### UI Scope
+## Tiêu chí chấp nhận
 
-- Action menu
-- Edit modal
-- Pre-filled form fields
+- **Cho trước** admin chọn "Chỉnh sửa" trên một quản trị viên  
+- **Khi** modal mở ra  
+- **Thì** form được điền sẵn dữ liệu hiện tại  
+- **Và** admin có thể cập nhật và lưu thay đổi  
+- **Và** cảnh báo nếu đóng modal khi còn thay đổi chưa lưu
 
-#### Frontend Considerations
+## Phạm vi giao diện
 
-- State management: selected admin details, dirty state, form validation
-- Validation: required fields, uniqueness check, status/roles consistency
-- Error handling: map backend update errors to fields
-- Reusability: same modal/form as create flow
-- Accessibility: clear error announcements
+- Menu thao tác → Chỉnh sửa
+- Modal form (dùng chung với thêm mới)
+- Các trường đã điền sẵn
 
-#### Hidden Requirements
+## Lưu ý triển khai
 
-- Need dirty-state warning if the admin closes without saving
-- Must distinguish create vs edit modal state
+- Dùng chung modal với luồng thêm mới (QLQTV_US5)  
+- Phân biệt rõ chế độ tạo mới và chỉnh sửa  
+- Hiển thị lỗi từ server theo từng trường
 
-#### Dependency
+## Phụ thuộc
 
-- Backend API: GET /api/admin-users/{adminId}, PUT /api/admin-users/{adminId}
-- Other FE stories: Role list loader
+- API: `GET /api/admin-users/{adminId}`, `PUT /api/admin-users/{adminId}` `[CHƯA RÕ]`
+- QLQTV_US5 (form modal cơ bản)
 
-#### Story Point
+## Ngoài phạm vi
 
-M
+- Lịch sử thay đổi thông tin

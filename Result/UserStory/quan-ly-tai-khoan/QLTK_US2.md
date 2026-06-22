@@ -1,42 +1,41 @@
 # User Story: QLTK_US2
 
-As a Web Admin
-I want action menu options to adapt based on review status
-So that I only see relevant operations for each account
+| Trường | Giá trị |
+|--------|---------|
+| **Module** | Quản lý Tài khoản |
+| **Epic** | 2 — Thao tác theo trạng thái duyệt |
+| **Pages** | 7, 8 |
+| **REQ IDs** | REQ-ACC-002, REQ-ACC-003 |
+| **Điểm ước lượng** | S (≈0,5–1,5 ngày) |
 
-#### Acceptance Criteria
+## Câu chuyện
 
-Given the admin views a user row
-When the reviewStatus is Từ chối duyệt
-Then the action menu includes View Rejection Reason
-And other statuses show only applicable actions
+**Với vai trò** Quản trị Web Admin  
+**Tôi muốn** menu thao tác thay đổi theo trạng thái duyệt của tài khoản  
+**Để** chỉ thấy các thao tác phù hợp với từng trường hợp
 
-#### UI Scope
+## Tiêu chí chấp nhận
 
-- Action menu
-- Conditional menu items
-- View Rejection Reason modal
+- **Cho trước** admin xem một dòng tài khoản  
+- **Khi** trạng thái duyệt là "Từ chối duyệt"  
+- **Thì** menu thao tác có thêm "Xem lý do từ chối" `[ĐÃ XÁC NHẬN]`  
+- **Và** chọn mục này mở modal hiển thị lý do từ chối  
+- **Và** các trạng thái khác chỉ hiển thị thao tác tương ứng `[CHƯA RÕ — cần ma trận trạng thái]`
 
-#### Frontend Considerations
+## Phạm vi giao diện
 
-- State management: selected account, menu state
-- Validation: status-driven menu rendering
-- Error handling: show message if data missing
-- Reusability: shared action menu component
-- Accessibility: menu keyboard navigation
+- Menu thao tác theo trạng thái
+- Modal xem lý do từ chối
 
-#### Hidden Requirements
+## Lưu ý triển khai
 
-- Need mapping between reviewStatus and allowed actions
-- Need modal or inline view for rejection note
+- Cấu hình mapping trạng thái → thao tác, dễ mở rộng khi khách xác nhận danh sách trạng thái
 
-#### Dependency
+## Phụ thuộc
 
-- Backend API: GET /api/user-accounts/{userId}
-- Permission system: view rejection reason
+- API: `GET /api/user-accounts/{userId}` `[CHƯA RÕ]`
+- QLTK_US1 (danh sách cơ bản)
 
-#### Story Point
+## Ngoài phạm vi
 
-S
-
----
+- Chỉnh sửa lý do từ chối

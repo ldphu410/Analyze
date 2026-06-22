@@ -1,106 +1,100 @@
-# Module: Quản lý danh mục
+# Module: Quản lý Danh mục
 
-## Nội dung chính
-Module Quản lý danh mục hiển thị quản lý danh mục lớn và modal thao tác chỉnh sửa. Page 34-35 mô tả bảng danh mục lớn và các action/modal tương ứng.
+| Trường | Giá trị |
+|--------|---------|
+| **Pages** | 34–35 |
+| **Ước lượng FE** | ~4,5 ngày |
+| **User Story** | QLDM_US1 – QLDM_US3 |
+
+## Tổng quan
+
+Quản lý danh mục lớn: bảng danh sách và modal thao tác (thêm/sửa). Tái sử dụng UI hiện có `[ĐÃ XÁC NHẬN]`.
 
 ## Page liên quan
-- Page 34: Quản lý danh mục lớn.
-- Page 35: Action và modal quản lý danh mục.
 
-## Requirement được phát hiện
-| ID | Requirement | Loại | Actor liên quan | Mức độ rõ ràng |
-|---|---|---|---|---|
-| REQ-CAT-001 | Hiển thị bảng quản lý danh mục lớn. | Functional | Admin | Clear |
-| REQ-CAT-002 | Cung cấp action và modal thao tác danh mục. | Functional | Admin | Clear |
-| REQ-CAT-003 | UI phải tái sử dụng cấu trúc hiện có. | Business Rule | Admin/FE | Clear |
+| Page | Nội dung |
+|------|----------|
+| 34 | Bảng quản lý danh mục lớn |
+| 35 | Thao tác và modal quản lý danh mục |
 
-## Business Rule
-- BR-CAT-001: Action danh mục phải mở modal thao tác.
-- BR-CAT-002: Dữ liệu danh mục phải hiển thị đầy đủ trên bảng.
-- BR-CAT-003: Modal phải hỗ trợ sửa và xác nhận hành động.
+## Yêu cầu chức năng
 
-## Dữ liệu liên quan
-| Data Object | Field / Attribute | Mô tả | Bắt buộc? | Ghi chú |
-|---|---|---|---|---|
-| Category | categoryId | ID danh mục | Yes | |
-| Category | name | Tên danh mục | Yes | |
-| Category | description | Mô tả | No | |
-| Category | status | Trạng thái | No | |
+| ID | Mô tả | Loại | Mức độ |
+|---|---|---|---|
+| REQ-CAT-001 | Hiển thị bảng quản lý danh mục lớn | Chức năng | Rõ |
+| REQ-CAT-002 | Thao tác và modal quản lý danh mục | Chức năng | Rõ |
+| REQ-CAT-003 | Tái sử dụng cấu trúc UI hiện có | Quy tắc | Rõ |
 
-## Actor / Role liên quan
-- Actor: Admin Web Admin
-- Vai trò: Quản lý danh mục.
-- Quyền/hành động:
-  - Xem danh sách danh mục.
-  - Mở modal thao tác.
-  - Lưu/cập nhật danh mục.
+## Quy tắc nghiệp vụ
 
-## Assumption
-- Danh mục có cấu trúc phẳng.
-- Modal sử dụng lại component CRUD hiện có.
-- Không cần cây phân cấp phức tạp.
+- BR-CAT-001: Thao tác danh mục mở qua modal.
+- BR-CAT-002: Dữ liệu hiển thị đầy đủ trên bảng.
+- BR-CAT-003: Modal hỗ trợ sửa và xác nhận hành động.
 
-## Open Questions
-- Có cần chức năng tạo mới và xóa danh mục không?
-- Danh mục có nhiều cấp hay chỉ một cấp?
-- Có cần phân quyền truy cập theo danh mục không?
+## Dữ liệu liên quan `[GIẢ ĐỊNH]`
 
-## Mermaid diagrams
-### Use Case Diagram
-```mermaid
-flowchart TD
-  Admin -->|Xem danh mục| List
-  Admin -->|Thao tác danh mục| Modal
-```
+| Đối tượng | Trường | Mô tả | Bắt buộc |
+|---|---|---|---|
+| Category | categoryId | ID danh mục | Có |
+| Category | name | Tên danh mục | Có |
+| Category | description | Mô tả | Không |
+| Category | status | Trạng thái | Không |
 
-### Business Flow Diagram
+## Vai trò sử dụng
+
+- **Người dùng:** Admin Web Admin
+- **Thao tác:** Xem danh sách, mở modal, lưu/cập nhật danh mục
+
+## Giả định
+
+- Danh mục cấu trúc phẳng (một cấp).
+- Modal tái sử dụng component CRUD hiện có.
+
+## Câu hỏi cần khách xác nhận
+
+1. Có cần tạo mới và xóa danh mục không?
+2. Danh mục có nhiều cấp hay chỉ một cấp?
+3. Có phân quyền theo danh mục không?
+
+## Luồng nghiệp vụ
+
 ```mermaid
 flowchart LR
   List[Danh sách danh mục] --> Modal[Modal thao tác]
   Modal --> Save[Lưu]
 ```
 
-### Sequence Diagram
-```mermaid
-sequenceDiagram
-  participant Admin
-  participant WebAdmin
-  participant Backend
-  Admin->>WebAdmin: Mở quản lý danh mục
-  Admin->>WebAdmin: Mở modal
-  WebAdmin->>Backend: Lưu dữ liệu
-```
+## Phân tích khoảng trống
 
-### Module Dependency Diagram
-```mermaid
-flowchart LR
-  List --> Modal
-  Modal --> Backend
-```
-
-## Gap Analysis
 - Chưa rõ có tạo mới/xóa hay không.
-- Chưa xác định cấu trúc dữ liệu phức tạp.
+- Chưa xác định cấu trúc phân cấp.
 
-## Đề xuất kiến trúc sơ bộ
-- Frontend: bảng danh mục, modal CRUD.
-- Backend: API lấy danh mục, API lưu danh mục.
-- Data: bảng `categories`.
+## Hạng mục triển khai (giao diện)
 
-## Hidden requirements & Edge cases
-- Category hierarchy: nếu cần multi-level later, UI phải support tree structure hoặc expandable lists.
-- Validation: tránh duplicate names, áp dụng trimming/normalization và quy định unique key.
-- Bulk import/export: có thể yêu cầu import/export CSV/Excel — chuẩn bị interface để extend.
+| Hạng mục | Quy mô | Ước lượng |
+|----------|--------|-----------|
+| Bảng danh mục + cột thao tác | S | 1,5–2,5 ngày |
+| Modal thêm/sửa + validation | S | 1,5–2 ngày |
 
-## Implementation breakdown (frontend tasks)
-- [UI][Small] `CategoryList` table với CRUD action column. Est: 1.5–2.5d
-- [UI][Small] `CategoryModal` cho create/edit với validation. Est: 1.5–2d
+## Yêu cầu bổ sung & ngoài phạm vi
 
-<!-- Note: Integration, testing, and accessibility tasks intentionally excluded from this breakdown per request. -->
+- `[GIẢ ĐỊNH]` Kiểm tra tên trùng lặp.
+- `[NGOÀI PHẠM VI]` Cây nhiều cấp, import/export — xem [README.md](../README.md).
 
-## FE Estimate (single senior FE)
-- Sum (mid ranges): 3.75d
-- Contingency 20%: 0.75d
-- Total FE estimate: ~4.5d
+## Ước lượng FE (1 Senior)
 
-```
+| Hạng mục | Ngày |
+|----------|------|
+| Tổng (mid) | 3,75 |
+| Dự phòng 20% | 0,75 |
+| **Tổng cộng** | **~4,5** |
+
+## User Story
+
+| ID | Tên | Điểm |
+|----|-----|------|
+| QLDM_US1 | Danh sách danh mục lớn | S |
+| QLDM_US2 | Chỉnh sửa danh mục (modal) | M |
+| QLDM_US3 | Thêm danh mục mới | M |
+
+> Module **Quản lý Nhóm kỹ thuật** tái sử dụng template UI từ module này.

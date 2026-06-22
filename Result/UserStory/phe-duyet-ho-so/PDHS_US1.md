@@ -1,45 +1,47 @@
 # User Story: PDHS_US1
 
-As a Web Admin
-I want to view a paginated list of approval requests
-So that I can manage pending approvals without loading all requests at once
+| Trường | Giá trị |
+|--------|---------|
+| **Module** | Phê duyệt Hồ sơ & Gói DV |
+| **Epic** | 1 — Danh sách yêu cầu phê duyệt |
+| **Pages** | 20–23 |
+| **REQ IDs** | REQ-PHE-001, REQ-PHE-002, REQ-PHE-003, REQ-PHE-004 |
+| **Điểm ước lượng** | M (≈2–3 ngày) |
 
-#### Acceptance Criteria
+## Câu chuyện
 
-Given the admin opens the approval request list page
-When the page loads
-Then a paginated table appears with columns cho requestId, requestType, subjectType, status, lastUpdated, and actions
-And the first page of results is displayed
+**Với vai trò** Quản trị Web Admin  
+**Tôi muốn** xem danh sách yêu cầu phê duyệt hồ sơ cơ sở và gói dịch vụ có phân trang  
+**Để** quản lý các yêu cầu chờ duyệt mà không tải toàn bộ dữ liệu một lần
 
-#### UI Scope
+## Tiêu chí chấp nhận
 
-- Table
-- Pagination controls
-- Status badge
-- Action menu
-- Filter bar
+- **Cho trước** admin mở danh sách phê duyệt hồ sơ cơ sở (Page 20–21)  
+- **Khi** trang được tải  
+- **Thì** hiển thị bảng phân trang với các cột: mã yêu cầu, loại đối tượng, trạng thái, thời gian cập nhật, thao tác
 
-#### Frontend Considerations
+- **Cho trước** admin mở danh sách phê duyệt gói dịch vụ (Page 22–23)  
+- **Khi** trang được tải  
+- **Thì** dùng cùng giao diện bảng, chỉ khác dữ liệu cột "Đối tượng xét duyệt" `[ĐÃ XÁC NHẬN]`
 
-- State management: pagination, current page, list data
-- Validation: none beyond render and enum mapping
-- Error handling: show error banner with retry
-- Reusability: use existing table component
-- Accessibility: keyboard support for table rows and pagination
+- **Và** hiển thị trạng thái trống và loading phù hợp
 
-#### Hidden Requirements
+## Phạm vi giao diện
 
-- Table implies sorting by at least one column
-- Need empty state when no requests exist
-- Need loading state during fetch
+- Component danh sách dùng chung (`ApprovalList`) với tham số `requestType`
+- Phân trang, badge trạng thái, menu thao tác
+- Bảng chi tiết (Page 21, 23)
 
-#### Dependency
+## Lưu ý triển khai
 
-- Backend API: GET /api/approval-requests?page=&limit=
-- Permission system: admin approval permission
+- Một component danh sách, hai cấu hình — không duplicate code  
+- Phân trang phía server `[GIẢ ĐỊNH]`
 
-#### Story Point
+## Phụ thuộc
 
-M
+- API: `GET /api/approval-requests?requestType=` `[CHƯA RÕ]`
+- Quyền: xem yêu cầu phê duyệt
 
----
+## Ngoài phạm vi
+
+- Xuất danh sách ra Excel

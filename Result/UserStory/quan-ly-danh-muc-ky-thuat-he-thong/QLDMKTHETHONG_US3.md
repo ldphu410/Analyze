@@ -1,39 +1,40 @@
 # User Story: QLDMKTHETHONG_US3
 
-As a Web Admin
-I want to confirm before closing the upload preview panel if there are unsaved changes
-So that I do not lose my validated data accidentally
+| Trường | Giá trị |
+|--------|---------|
+| **Module** | Quản lý DMKT Hệ thống |
+| **Epic** | 2 — Upload Excel và preview |
+| **Pages** | 40 |
+| **REQ IDs** | REQ-DMKT-004 |
+| **Điểm ước lượng** | S (≈0,5–1,5 ngày) |
 
-#### Acceptance Criteria
+## Câu chuyện
 
-Given the upload preview panel is open with validated data
-When the admin attempts to close it without saving
-Then a confirmation dialog appears
-And closing proceeds only after confirmation
+**Với vai trò** Quản trị Web Admin  
+**Tôi muốn** được xác nhận trước khi đóng panel preview khi còn dữ liệu chưa lưu  
+**Để** tránh mất dữ liệu đã kiểm tra
 
-#### UI Scope
+## Tiêu chí chấp nhận
 
-- Upload preview side panel
-- Confirm close modal
+- **Cho trước** side panel preview đang mở và có dữ liệu chưa lưu  
+- **Khi** admin cố đóng panel  
+- **Thì** hiển thị popup xác nhận `[ĐÃ XÁC NHẬN]`  
+- **Và** chỉ đóng panel sau khi admin xác nhận  
+- **Và** giữ nguyên panel nếu admin chọn Hủy
 
-#### Frontend Considerations
+## Phạm vi giao diện
 
-- State management: unsaved upload state
-- Validation: detect whether preview has unsaved changes
-- Error handling: keep panel open if user cancels
-- Reusability: confirmation modal component
-- Accessibility: focus trap trong modal
+- Side panel preview upload
+- Popup xác nhận đóng
 
-#### Hidden Requirements
+## Lưu ý triển khai
 
-- Side panel with upload preview implies dirty-state warning
-- Need consistent behavior across modal/panel close actions
+- Áp dụng nhất quán khi đóng bằng nút X hoặc click ra ngoài `[GIẢ ĐỊNH]`
 
-#### Dependency
+## Phụ thuộc
 
-- Frontend only behavior with upload state
+- QLDMKTHETHONG_US2 (upload và preview)
 
-#### Story Point
+## Ngoài phạm vi
 
-S
-
+- Tự động lưu nháp (auto-save)

@@ -1,38 +1,41 @@
 # User Story: QLB_US3
 
-As a Web Admin
-I want to see upload validation feedback before saving a banner image
-So that I avoid uploading invalid files
+| Trường | Giá trị |
+|--------|---------|
+| **Module** | Quản lý Banner |
+| **Epic** | 2 — Cập nhật banner |
+| **Pages** | 5 |
+| **REQ IDs** | REQ-BN-002 |
+| **Điểm ước lượng** | S (≈0,5–1,5 ngày) |
 
-#### Acceptance Criteria
+## Câu chuyện
 
-Given the admin selects a new banner image
-When the image is validated
-Then the UI shows file size or aspect ratio errors before upload
+**Với vai trò** Quản trị Web Admin  
+**Tôi muốn** nhận phản hồi khi file ảnh banner không hợp lệ  
+**Để** tránh upload file sai trước khi lưu
 
-#### UI Scope
+## Tiêu chí chấp nhận
 
-- Image uploader
-- Validation message area
-- Preview panel
+- **Cho trước** admin chọn ảnh banner mới  
+- **Khi** hệ thống kiểm tra file  
+- **Thì** hiển thị lỗi về dung lượng hoặc tỷ lệ ảnh (nếu có) trước khi upload  
+- **Và** hiển thị preview ảnh hợp lệ
 
-#### Frontend Considerations
+## Phạm vi giao diện
 
-- State management: upload file selection, validation state
-- Validation: file type, max size, aspect ratio
-- Error handling: inline validation messages
-- Reusability: use shared uploader with validation
-- Accessibility: error message association with the upload field
+- Upload ảnh
+- Khu vực thông báo lỗi
+- Preview ảnh
 
-#### Hidden Requirements
+## Lưu ý triển khai
 
-- Image upload implies client-side validation and preview
-- Need fallback when upload fails
+- Kiểm tra loại file, dung lượng tối đa `[GIẢ ĐỊNH]`  
+- Quy tắc tỷ lệ ảnh cần khách xác nhận `[CHƯA RÕ]`
 
-#### Dependency
+## Phụ thuộc
 
-- Backend API: POST /api/banners/{bannerId}/upload or PUT banner payload
+- QLB_US2 (form chỉnh sửa banner)
 
-#### Story Point
+## Ngoài phạm vi
 
-S
+- Tự động resize ảnh

@@ -1,39 +1,42 @@
 # User Story: QLQTV_US4
 
-As a Web Admin
-I want to open admin user details from the list
-So that I can review a user before editing or deleting them
+| Trường | Giá trị |
+|--------|---------|
+| **Module** | Quản lý QTV |
+| **Epic** | 2 — Chi tiết quản trị viên |
+| **Pages** | 2 |
+| **REQ IDs** | REQ-QTV-002 |
+| **Điểm ước lượng** | S (≈0,5–1,5 ngày) |
 
-#### Acceptance Criteria
+## Câu chuyện
 
-Given the admin is on the Admin User List page
-When they choose View Details from an action menu
-Then the Admin Detail view or side panel opens with full admin information
+**Với vai trò** Quản trị Web Admin  
+**Tôi muốn** mở chi tiết quản trị viên từ danh sách  
+**Để** xem đầy đủ thông tin trước khi chỉnh sửa hoặc xóa
 
-#### UI Scope
+## Tiêu chí chấp nhận
 
-- Action menu
-- Detail panel/view
-- Read-only fields for user info
+- **Cho trước** admin đang ở trang Danh sách quản trị viên  
+- **Khi** chọn "Xem chi tiết" từ menu thao tác  
+- **Thì** mở panel hoặc màn hình chi tiết với đầy đủ thông tin quản trị viên  
+- **Và** các trường hiển thị ở chế độ chỉ xem (read-only)
 
-#### Frontend Considerations
+## Phạm vi giao diện
 
-- State management: selected admin user, detail fetch state
-- Validation: none beyond render
-- Error handling: show detail load error and retry option
-- Reusability: use existing detail panel from Web Chuyên Gia
-- Accessibility: focus trap in detail panel if modal
+- Menu thao tác
+- Panel / màn hình chi tiết
+- Các trường thông tin chỉ xem
 
-#### Hidden Requirements
+## Lưu ý triển khai
 
-- Action menu implies additional actions such as edit/delete
-- Need loading and empty states for detail panel
+- Tái sử dụng panel chi tiết từ Web Chuyên Gia  
+- Hiển thị loading và thông báo lỗi kèm thử lại khi tải thất bại
 
-#### Dependency
+## Phụ thuộc
 
-- Backend API: GET /api/admin-users/{adminId}
-- Other FE stories: Admin List base data
+- API: `GET /api/admin-users/{adminId}` `[CHƯA RÕ]`
+- QLQTV_US1 (danh sách cơ bản)
 
-#### Story Point
+## Ngoài phạm vi
 
-S
+- Chỉnh sửa trực tiếp trên màn hình chi tiết (dùng modal chỉnh sửa — QLQTV_US6)

@@ -1,43 +1,45 @@
 # User Story: QLQTV_US1
 
-As a Web Admin
-I want to view the list of admin users in a paginated table
-So that I can quickly find and manage admins without loading all records at once
+| Trường | Giá trị |
+|--------|---------|
+| **Module** | Quản lý QTV |
+| **Epic** | 1 — Danh sách quản trị viên |
+| **Pages** | 1, 2 |
+| **REQ IDs** | REQ-QTV-001, REQ-QTV-002 |
+| **Điểm ước lượng** | M (≈2–3 ngày) |
 
-#### Acceptance Criteria
+## Câu chuyện
 
-Given the admin opens the Admin User List page
-When the page loads
-Then a table of admin users is displayed with columns for name, email, roles, status, createdAt, and actions
-And the first page of results is shown
+**Với vai trò** Quản trị Web Admin  
+**Tôi muốn** xem danh sách tài khoản quản trị viên dạng bảng có phân trang  
+**Để** tìm kiếm và quản lý nhanh mà không cần tải toàn bộ dữ liệu một lần
 
-#### UI Scope
+## Tiêu chí chấp nhận
 
-- Table
-- Columns: Name, Email, Roles, Status, Created At, Action menu
-- Pagination controls
+- **Cho trước** admin mở trang Danh sách quản trị viên  
+- **Khi** trang được tải  
+- **Thì** hiển thị bảng với các cột: tên, email, vai trò (role), trạng thái, ngày tạo, thao tác  
+- **Và** hiển thị trang đầu tiên của kết quả  
+- **Và** hiển thị trạng thái trống khi chưa có quản trị viên  
+- **Và** hiển thị loading khi đang tải dữ liệu
 
-#### Frontend Considerations
+## Phạm vi giao diện
 
-- State management: list pagination state, current page, row data cache
-- Validation: none beyond list render
-- Error handling: show error banner if load fails
-- Reusability: use existing table component from Web Chuyên Gia
-- Accessibility: keyboard navigation for table rows and pagination
+- Bảng danh sách (table)
+- Phân trang (pagination)
+- Menu thao tác trên từng dòng
 
-#### Hidden Requirements
+## Lưu ý triển khai
 
-- Table implies sorting by at least one column
-- Need empty state when no admins exist
-- Need loading state while data is fetched
+- Tái sử dụng component bảng từ Web Chuyên Gia  
+- Hỗ trợ sắp xếp theo ít nhất một cột `[GIẢ ĐỊNH]`  
+- Hiển thị thông báo lỗi kèm nút thử lại nếu tải dữ liệu thất bại
 
-#### Dependency
+## Phụ thuộc
 
-- Backend API: GET /api/admin-users?page=&limit=
-- Permission system: user must have admin management permission
+- API: `GET /api/admin-users?page=&limit=` `[CHƯA RÕ]`
+- Quyền: quản lý tài khoản quản trị viên
 
-#### Story Point
+## Ngoài phạm vi
 
-M
-
----
+- Thao tác hàng loạt (bulk action)

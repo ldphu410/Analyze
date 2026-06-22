@@ -1,38 +1,41 @@
 # User Story: QLQTV_US3
 
-As a Web Admin
-I want to filter admin users by status and role
-So that I can segment the list and focus on the relevant operators
+| Trường | Giá trị |
+|--------|---------|
+| **Module** | Quản lý QTV |
+| **Epic** | 1 — Danh sách quản trị viên |
+| **Pages** | 1, 2 |
+| **REQ IDs** | REQ-QTV-007 |
+| **Điểm ước lượng** | S (≈0,5–1,5 ngày) |
 
-#### Acceptance Criteria
+## Câu chuyện
 
-Given the admin is on the Admin User List page
-When they select status or role filters
-Then the list updates to show only matching admin users
-And the backend is queried with filter parameters
+**Với vai trò** Quản trị Web Admin  
+**Tôi muốn** lọc danh sách quản trị viên theo trạng thái và vai trò (role)  
+**Để** tập trung vào nhóm tài khoản cần xử lý
 
-#### UI Scope
+## Tiêu chí chấp nhận
 
-- Filter chips/dropdowns for Status and Role
-- Table refresh
+- **Cho trước** admin đang ở trang Danh sách quản trị viên  
+- **Khi** chọn bộ lọc trạng thái hoặc vai trò  
+- **Thì** bảng chỉ hiển thị các quản trị viên phù hợp  
+- **Và** yêu cầu lọc được gửi lên server kèm tham số filter
 
-#### Frontend Considerations
+## Phạm vi giao diện
 
-- State management: filter values, selected roles/status
-- Validation: check filter values are valid enums
-- Error handling: fallback to previous results if filter load fails
-- Reusability: filter components aligned with existing UI
-- Accessibility: filter controls are keyboard accessible
+- Bộ lọc trạng thái và vai trò (dropdown hoặc chip)
+- Làm mới bảng sau khi lọc
 
-#### Hidden Requirements
+## Lưu ý triển khai
 
-- Filter implies server-side query parameters and possible multi-select behavior
+- Lọc phía server (server-side filter) `[GIẢ ĐỊNH]`  
+- Có thể hỗ trợ chọn nhiều giá trị `[GIẢ ĐỊNH]`
 
-#### Dependency
+## Phụ thuộc
 
-- Backend API: GET /api/admin-users?status=&roles=
-- Permission system: read access to admin list
+- API: `GET /api/admin-users?status=&roles=` `[CHƯA RÕ]`
+- QLQTV_US1 (danh sách cơ bản)
 
-#### Story Point
+## Ngoài phạm vi
 
-S
+- Lưu bộ lọc yêu thích

@@ -1,42 +1,43 @@
 # User Story: QLDM_US2
 
-As a Web Admin
-I want to open a modal to edit a category
-So that I can update category details quickly
+| Trường | Giá trị |
+|--------|---------|
+| **Module** | Quản lý Danh mục |
+| **Epic** | 2 — Thao tác danh mục |
+| **Pages** | 35 |
+| **REQ IDs** | REQ-CAT-002 |
+| **Điểm ước lượng** | M (≈2–3 ngày) |
 
-#### Acceptance Criteria
+## Câu chuyện
 
-Given the admin clicks Edit on a category
-When the modal opens
-Then form fields pre-fill the current values và allow save or cancel
+**Với vai trò** Quản trị Web Admin  
+**Tôi muốn** mở modal chỉnh sửa danh mục  
+**Để** cập nhật thông tin nhanh mà không rời trang danh sách
 
-#### UI Scope
+## Tiêu chí chấp nhận
 
-- Edit action button
-- Modal
-- Form fields: name, description, status
-- Save/Cancel buttons
+- **Cho trước** admin nhấn Chỉnh sửa trên một danh mục  
+- **Khi** modal mở ra  
+- **Thì** form được điền sẵn dữ liệu hiện tại  
+- **Và** admin có thể Lưu hoặc Hủy  
+- **Và** cảnh báo nếu đóng modal còn thay đổi chưa lưu
 
-#### Frontend Considerations
+## Phạm vi giao diện
 
-- State management: form state, modal visibility
-- Validation: required name, max length
-- Error handling: field-level validation và server error mapping
-- Reusability: shared modal/form controls
-- Accessibility: focus management và labels
+- Nút Chỉnh sửa
+- Modal form: tên, mô tả, trạng thái
+- Nút Lưu / Hủy
 
-#### Hidden Requirements
+## Lưu ý triển khai
 
-- Need dirty state warning nếu đóng modal khi có thay đổi chưa lưu
-- Need unique name validation khi lưu
+- Kiểm tra tên trùng lặp khi lưu `[GIẢ ĐỊNH]`  
+- Tái sử dụng modal/form hiện có
 
-#### Dependency
+## Phụ thuộc
 
-- Backend API: GET /api/categories/{categoryId}, PUT /api/categories/{categoryId}
-- Permission system: edit category permission
+- API: `GET /api/categories/{id}`, `PUT /api/categories/{id}` `[CHƯA RÕ]`
+- QLDM_US1 (danh sách)
 
-#### Story Point
+## Ngoài phạm vi
 
-M
-
----
+- Import/export danh mục

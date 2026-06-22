@@ -1,41 +1,48 @@
 # User Story: PDHS_US4
 
-As a Web Admin
-I want to approve or reject a request with a mandatory rejection note when rejecting
-So that the decision process is documented and transparent
+| Trường | Giá trị |
+|--------|---------|
+| **Module** | Phê duyệt Hồ sơ & Gói DV |
+| **Epic** | 3 — Quyết định phê duyệt |
+| **Pages** | 33 |
+| **REQ IDs** | REQ-PHE-007 |
+| **Điểm ước lượng** | M (≈2–3 ngày) |
 
-#### Acceptance Criteria
+## Câu chuyện
 
-Given the admin opens a request detail
-When they choose Reject
-Then a confirmation modal appears with a required note field
-And rejection submits only when the note is provided
+**Với vai trò** Quản trị Web Admin  
+**Tôi muốn** duyệt hoặc từ chối yêu cầu, bắt buộc nhập lý do khi từ chối  
+**Để** quy trình phê duyệt có căn cứ và minh bạch
 
-#### UI Scope
+## Tiêu chí chấp nhận
 
-- Approve/Reject buttons
-- Confirmation modal
-- Required note textarea
-- Success/error toast
+- **Cho trước** admin đang xem chi tiết yêu cầu ở chế độ phê duyệt  
+- **Khi** nhấn Duyệt và xác nhận  
+- **Thì** gửi quyết định và cập nhật trạng thái thành "Đã xét duyệt"
 
-#### Frontend Considerations
+- **Cho trước** admin nhấn Từ chối  
+- **Khi** modal từ chối mở ra  
+- **Thì** bắt buộc nhập lý do trước khi gửi `[ĐÃ XÁC NHẬN]`  
+- **Và** hiển thị lỗi validation nếu chưa nhập lý do  
+- **Và** sau khi thành công, trạng thái cập nhật thành "Từ chối duyệt"
 
-- State management: action state, modal visibility, form values
-- Validation: required rejectionReason when rejecting
-- Error handling: show server error message if action fails
-- Reusability: modal and form controls
-- Accessibility: announce validation errors
+## Phạm vi giao diện
 
-#### Hidden Requirements
+- Nút Duyệt (kèm xác nhận)
+- Modal Từ chối với ô nhập lý do bắt buộc
+- Thông báo thành công / lỗi
 
-- Reject action implies mandatory note and confirmation dialog
-- Approve action may need optimistic update or status refresh
+## Lưu ý triển khai
 
-#### Dependency
+- Kiểm tra phía client: bắt buộc có lý do khi từ chối  
+- Refresh trạng thái trên panel và danh sách sau khi quyết định
 
-- Backend API: POST /api/approval-requests/{requestId}/decision
-- Permission system: approval decision permission
+## Phụ thuộc
 
-#### Story Point
+- API: `POST /api/approval-requests/{requestId}/decision` `[CHƯA RÕ]`
+- PDHS_US3 (panel chi tiết)
+- PDHS_US6 (đồng bộ trạng thái)
 
-M
+## Ngoài phạm vi
+
+- Gửi email/push thông báo cho người dùng

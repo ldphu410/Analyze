@@ -1,41 +1,42 @@
 # User Story: PDHS_US2
 
-As a Web Admin
-I want to filter the approval request list by type and status
-So that I can focus on the requests I need to process first
+| Trường | Giá trị |
+|--------|---------|
+| **Module** | Phê duyệt Hồ sơ & Gói DV |
+| **Epic** | 1 — Danh sách yêu cầu phê duyệt |
+| **Pages** | 20–23 |
+| **REQ IDs** | REQ-PHE-001, REQ-PHE-003 |
+| **Điểm ước lượng** | S (≈0,5–1,5 ngày) |
 
-#### Acceptance Criteria
+## Câu chuyện
 
-Given the admin is on the approval request list
-When they select requestType or status filters
-Then the table updates to show only matching requests
-And the backend query contains the filter parameters
+**Với vai trò** Quản trị Web Admin  
+**Tôi muốn** lọc danh sách yêu cầu theo loại và trạng thái  
+**Để** tập trung xử lý các yêu cầu ưu tiên trước
 
-#### UI Scope
+## Tiêu chí chấp nhận
 
-- Filter dropdowns for Request Type and Status
-- Table refresh
-- Clear filters action
+- **Cho trước** admin đang ở trang danh sách phê duyệt  
+- **Khi** chọn bộ lọc loại yêu cầu hoặc trạng thái  
+- **Thì** bảng chỉ hiển thị các yêu cầu phù hợp  
+- **Và** có nút xóa bộ lọc để trở về mặc định  
+- **Và** hiển thị trạng thái trống khi không có kết quả
 
-#### Frontend Considerations
+## Phạm vi giao diện
 
-- State management: selected filters, filter state
-- Validation: validate enum values before query
-- Error handling: fallback to previous result if filter applies fail
-- Reusability: filter controls from shared library
-- Accessibility: labels and keyboard support for filter controls
+- Dropdown lọc theo loại yêu cầu và trạng thái
+- Nút xóa bộ lọc
 
-#### Hidden Requirements
+## Lưu ý triển khai
 
-- Filter implies server-side query and possible multi-select
-- Need clear filter and empty result state
+- Lọc phía server với tham số query  
+- Tái sử dụng component lọc hiện có
 
-#### Dependency
+## Phụ thuộc
 
-- Backend API: GET /api/approval-requests?requestType=&status=
-- Permission system: read access to approval requests
+- API: `GET /api/approval-requests?requestType=&status=` `[CHƯA RÕ]`
+- PDHS_US1 (danh sách cơ bản)
 
-#### Story Point
+## Ngoài phạm vi
 
-S
-
+- Lưu bộ lọc yêu thích

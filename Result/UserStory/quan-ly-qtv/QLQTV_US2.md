@@ -1,42 +1,43 @@
 # User Story: QLQTV_US2
 
-As a Web Admin
-I want to search admin users by name or email with debounce
-So that I can quickly narrow down results without overwhelming the backend
+| Trường | Giá trị |
+|--------|---------|
+| **Module** | Quản lý QTV |
+| **Epic** | 1 — Danh sách quản trị viên |
+| **Pages** | 1, 2 |
+| **REQ IDs** | REQ-QTV-007 |
+| **Điểm ước lượng** | S (≈0,5–1,5 ngày) |
 
-#### Acceptance Criteria
+## Câu chuyện
 
-Given the admin is on the Admin User List page
-When they type into the search box
-Then the list is filtered after a short debounce interval
-And the request is sent to the backend with a search query
+**Với vai trò** Quản trị Web Admin  
+**Tôi muốn** tìm kiếm quản trị viên theo tên hoặc email  
+**Để** thu hẹp kết quả nhanh và giảm tải hệ thống
 
-#### UI Scope
+## Tiêu chí chấp nhận
 
-- Search box
-- Table refresh
-- Loading indicator for search
+- **Cho trước** admin đang ở trang Danh sách quản trị viên  
+- **Khi** nhập từ khóa vào ô tìm kiếm  
+- **Thì** danh sách được lọc sau khoảng chờ ngắn (debounce)  
+- **Và** hệ thống gửi yêu cầu tìm kiếm lên server  
+- **Và** hiển thị trạng thái trống khi không có kết quả phù hợp
 
-#### Frontend Considerations
+## Phạm vi giao diện
 
-- State management: search query, debounce timer, filter state
-- Validation: sanitize query before sending
-- Error handling: show inline message if search fails
-- Reusability: use existing search input component
-- Accessibility: label and clear button
+- Ô tìm kiếm
+- Làm mới bảng sau khi tìm
+- Indicator loading khi đang tìm
 
-#### Hidden Requirements
+## Lưu ý triển khai
 
-- Search implies debounce or throttling
-- Need empty state for no match results
+- Tái sử dụng component tìm kiếm hiện có  
+- Có nút xóa nội dung tìm kiếm
 
-#### Dependency
+## Phụ thuộc
 
-- Backend API: GET /api/admin-users?search=
-- Permission system: read access to admin list
+- API: `GET /api/admin-users?search=` `[CHƯA RÕ]`
+- QLQTV_US1 (danh sách cơ bản)
 
-#### Story Point
+## Ngoài phạm vi
 
-S
-
----
+- Tìm kiếm nâng cao (nhiều điều kiện kết hợp)

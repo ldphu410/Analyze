@@ -1,41 +1,44 @@
 # User Story: QLTK_US1
 
-As a Web Admin
-I want to view the user account list with review status
-So that I can identify which accounts need action or review
+| Trường | Giá trị |
+|--------|---------|
+| **Module** | Quản lý Tài khoản |
+| **Epic** | 1 — Danh sách tài khoản |
+| **Pages** | 6, 7 |
+| **REQ IDs** | REQ-ACC-001, REQ-ACC-002 |
+| **Điểm ước lượng** | M (≈2–3 ngày) |
 
-#### Acceptance Criteria
+## Câu chuyện
 
-Given the admin opens the account list page
-When the page loads
-Then a table appears with name, email, reviewStatus, lockStatus, và actions
+**Với vai trò** Quản trị Web Admin  
+**Tôi muốn** xem danh sách tài khoản người dùng kèm trạng thái duyệt  
+**Để** xác định tài khoản nào cần xử lý hoặc rà soát
 
-#### UI Scope
+## Tiêu chí chấp nhận
 
-- Table
-- Status badges
-- Action menu
-- Search/filter bar
+- **Cho trước** admin mở trang Danh sách tài khoản  
+- **Khi** trang được tải  
+- **Thì** hiển thị bảng với: tên, email, trạng thái duyệt, trạng thái khóa, thao tác  
+- **Và** hiển thị trạng thái trống khi chưa có tài khoản  
+- **Và** hiển thị loading khi đang tải dữ liệu
 
-#### Frontend Considerations
+## Phạm vi giao diện
 
-- State management: list data, selected filters
-- Validation: none beyond render
-- Error handling: show load failure
-- Reusability: shared table and status badge components
-- Accessibility: table keyboard support
+- Bảng danh sách kèm badge trạng thái
+- Menu thao tác trên từng dòng
+- Thanh tìm kiếm / lọc `[GIẢ ĐỊNH]`
 
-#### Hidden Requirements
+## Lưu ý triển khai
 
-- Need empty state if no accounts available
-- Need loading skeleton while fetching accounts
+- Tái sử dụng component bảng từ Web Chuyên Gia  
+- Phân trang phía server `[GIẢ ĐỊNH]`  
+- Thông báo lỗi kèm nút thử lại khi tải thất bại
 
-#### Dependency
+## Phụ thuộc
 
-- Backend API: GET /api/user-accounts
-- Permission system: account management permission
+- API: `GET /api/user-accounts` `[CHƯA RÕ]`
+- Quyền: xem danh sách tài khoản
 
-#### Story Point
+## Ngoài phạm vi
 
-M
-
+- Khóa / mở khóa hàng loạt

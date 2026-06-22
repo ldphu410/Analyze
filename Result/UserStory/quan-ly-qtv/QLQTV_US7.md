@@ -1,40 +1,42 @@
 # User Story: QLQTV_US7
 
-As a Web Admin
-I want to assign multiple roles to an admin user via multi-select
-So that their effective permissions reflect the correct responsibilities
+| Trường | Giá trị |
+|--------|---------|
+| **Module** | Quản lý QTV |
+| **Epic** | 4 — Phân quyền |
+| **Pages** | 3 |
+| **REQ IDs** | REQ-QTV-005 |
+| **Điểm ước lượng** | S (≈0,5–1,5 ngày) |
 
-#### Acceptance Criteria
+## Câu chuyện
 
-Given the admin is in the create or edit modal
-When they open the roles selector
-Then they can select one or more roles from the available list
-And the selection is shown clearly before save
+**Với vai trò** Quản trị Web Admin  
+**Tôi muốn** gán nhiều vai trò (role) cho một quản trị viên  
+**Để** quyền truy cập phản ánh đúng trách nhiệm công việc
 
-#### UI Scope
+## Tiêu chí chấp nhận
 
-- Role multi-select control
-- Role tags/chips display
+- **Cho trước** admin đang ở form thêm mới hoặc chỉnh sửa quản trị viên  
+- **Khi** mở bộ chọn vai trò  
+- **Thì** có thể chọn một hoặc nhiều vai trò từ danh sách  
+- **Và** các vai trò đã chọn hiển thị rõ ràng trước khi lưu
 
-#### Frontend Considerations
+## Phạm vi giao diện
 
-- State management: selected roles, available roles list
-- Validation: at least one role may be required
-- Error handling: fallback if roles cannot be loaded
-- Reusability: existing multi-select component
-- Accessibility: multi-select keyboard support
+- Bộ chọn vai trò (multi-select)
+- Hiển thị tag/chip vai trò đã chọn
 
-#### Hidden Requirements
+## Lưu ý triển khai
 
-- Permission assignment implies a separate roles API and mapping display of effective permissions
-- Need to handle large role lists and search within roles
+- Tái sử dụng component multi-select hiện có  
+- Có thể yêu cầu chọn ít nhất một vai trò `[GIẢ ĐỊNH]`  
+- Hỗ trợ tìm trong danh sách vai trò dài `[GIẢ ĐỊNH]`
 
-#### Dependency
+## Phụ thuộc
 
-- Backend API: GET /api/roles
+- API: `GET /api/roles` `[CHƯA RÕ]`
+- QLQTV_US5, QLQTV_US6 (form modal)
 
-#### Story Point
+## Ngoài phạm vi
 
-S
-
----
+- Tạo vai trò mới từ màn hình này

@@ -1,36 +1,40 @@
 # User Story: QLQTV_US8
 
-As a Web Admin
-I want to preview effective permissions for selected roles before saving
-So that I can avoid assigning an incorrect permission set
+| Trường | Giá trị |
+|--------|---------|
+| **Module** | Quản lý QTV |
+| **Epic** | 4 — Phân quyền |
+| **Pages** | 3 |
+| **REQ IDs** | REQ-QTV-005 |
+| **Điểm ước lượng** | S (≈0,5–1,5 ngày) |
 
-#### Acceptance Criteria
+## Câu chuyện
 
-Given the admin selects roles in the modal
-When role selection changes
-Then the UI updates to show effective permissions summary
+**Với vai trò** Quản trị Web Admin  
+**Tôi muốn** xem trước tổng hợp quyền (permission) sau khi chọn vai trò  
+**Để** tránh gán sai bộ quyền trước khi lưu
 
-#### UI Scope
+## Tiêu chí chấp nhận
 
-- Role selection control
-- Effective permissions preview panel
+- **Cho trước** admin đang chọn vai trò trong form  
+- **Khi** danh sách vai trò thay đổi  
+- **Thì** giao diện cập nhật hiển thị tổng hợp quyền tương ứng
 
-#### Frontend Considerations
+## Phạm vi giao diện
 
-- State management: selected roles, computed permissions
-- Validation: none beyond display
-- Error handling: show message if permission mapping fails
-- Reusability: permission preview component if available
-- Accessibility: screen-reader friendly summary
+- Bộ chọn vai trò
+- Khu vực xem trước quyền hiệu lực (effective permissions)
 
-#### Hidden Requirements
+## Lưu ý triển khai
 
-- Effective permissions view may require backend or client-side role matrix data
+- Dữ liệu quyền có thể lấy từ API hoặc mapping phía client `[GIẢ ĐỊNH]`  
+- Hiển thị thông báo nếu không tải được dữ liệu quyền
 
-#### Dependency
+## Phụ thuộc
 
-- Backend API: GET /api/roles or GET /api/role-matrix
+- API: `GET /api/roles` hoặc `GET /api/role-matrix` `[CHƯA RÕ]`
+- QLQTV_US7 (chọn vai trò)
 
-#### Story Point
+## Ngoài phạm vi
 
-S
+- Chỉnh sửa quyền chi tiết từng dòng (permission-level)

@@ -1,235 +1,46 @@
-# Backlog for Phê duyệt hồ sơ & gói dịch vụ
+# Backlog — Phê duyệt Hồ sơ & Gói dịch vụ
 
-## Epic 1: Approval Request List
+**Module:** Phê duyệt Hồ sơ & Gói DV  
+**Pages:** 20–33  
+**Phụ thuộc:** [Shared Detail Panel](../../modules/shared-detail-panel.md)
 
-### Business Goal
+## Danh mục User Story
 
-Tạo giao diện quản lý danh sách yêu cầu phê duyệt để admin có thể xem, lọc và truy cập nhanh chi tiết yêu cầu.
+| ID | Epic | Tên | Điểm | File |
+|----|------|-----|-------|------|
+| PDHS_US1 | 1 | Danh sách 2 luồng phê duyệt | M | [PDHS_US1.md](PDHS_US1.md) |
+| PDHS_US2 | 1 | Lọc theo loại và trạng thái | S | [PDHS_US2.md](PDHS_US2.md) |
+| PDHS_US3 | 2 | Chi tiết — chế độ phê duyệt | M | [PDHS_US3.md](PDHS_US3.md) |
+| PDHS_US4 | 3 | Duyệt / Từ chối + lý do bắt buộc | M | [PDHS_US4.md](PDHS_US4.md) |
+| PDHS_US5 | 2 | Panel theo loại đối tượng | M | [PDHS_US5.md](PDHS_US5.md) |
+| PDHS_US6 | 3 | Đồng bộ trạng thái admin / user | S | [PDHS_US6.md](PDHS_US6.md) |
 
-### User Stories
-
-#### Story 1.1
-
-As a Web Admin
-I want to view a paginated list of approval requests
-So that I can manage pending approvals without loading all requests at once
-
-#### Acceptance Criteria
-
-Given the admin opens the approval request list page
-When the page loads
-Then a paginated table appears with columns cho requestId, requestType, subjectType, status, lastUpdated, and actions
-And the first page of results is displayed
-
-#### UI Scope
-
-- Table
-- Pagination controls
-- Status badge
-- Action menu
-- Filter bar
-
-#### Frontend Considerations
-
-- State management: pagination, current page, list data
-- Validation: none beyond render and enum mapping
-- Error handling: show error banner with retry
-- Reusability: use existing table component
-- Accessibility: keyboard support for table rows and pagination
-
-#### Hidden Requirements
-
-- Table implies sorting by at least one column
-- Need empty state when no requests exist
-- Need loading state during fetch
-
-#### Dependency
-
-- Backend API: GET /api/approval-requests?page=&limit=
-- Permission system: admin approval permission
-
-#### Story Point
-
-M
+**Tổng điểm ước lượng:** 4M + 2S ≈ 10–14 ngày (chưa gồm Shared Detail Panel ~4 ngày)
 
 ---
 
-#### Story 1.2
+## Epic 1: Danh sách yêu cầu phê duyệt
 
-As a Web Admin
-I want to filter the approval request list by type and status
-So that I can focus on the requests I need to process first
+**Mục tiêu:** Admin xem, lọc và truy cập nhanh danh sách yêu cầu (hồ sơ cơ sở + gói dịch vụ).
 
-#### Acceptance Criteria
+→ Xem [PDHS_US1.md](PDHS_US1.md), [PDHS_US2.md](PDHS_US2.md)
 
-Given the admin is on the approval request list
-When they select requestType or status filters
-Then the table updates to show only matching requests
-And the backend query contains the filter parameters
+## Epic 2: Chi tiết yêu cầu
 
-#### UI Scope
+**Mục tiêu:** Xem chi tiết ở chế độ phê duyệt; đúng layout theo loại đối tượng; hỗ trợ chỉnh sửa dữ liệu `[CHƯA RÕ]`.
 
-- Filter dropdowns for Request Type and Status
-- Table refresh
-- Clear filters action
+→ Xem [PDHS_US3.md](PDHS_US3.md), [PDHS_US5.md](PDHS_US5.md)
 
-#### Frontend Considerations
+## Epic 3: Quyết định phê duyệt
 
-- State management: selected filters, filter state
-- Validation: validate enum values before query
-- Error handling: fallback to previous result if filter applies fail
-- Reusability: filter controls from shared library
-- Accessibility: labels and keyboard support for filter controls
+**Mục tiêu:** Duyệt / từ chối có ghi nhận lý do; đồng bộ trạng thái hai phía.
 
-#### Hidden Requirements
-
-- Filter implies server-side query and possible multi-select
-- Need clear filter and empty result state
-
-#### Dependency
-
-- Backend API: GET /api/approval-requests?requestType=&status=
-- Permission system: read access to approval requests
-
-#### Story Point
-
-S
-
-## Epic 2: Approval Detail & Decision
-
-### Business Goal
-
-Đảm bảo admin có thể xem chi tiết từng yêu cầu và đưa ra quyết định duyệt hoặc từ chối với lý do đầy đủ.
-
-### User Stories
-
-#### Story 2.1
-
-As a Web Admin
-I want to open approval request details from the list
-So that I can review related data before making a decision
-
-#### Acceptance Criteria
-
-Given the admin selects View Details on a request
-When the detail panel opens
-Then it shows relatedData theo subjectType và trạng thái hiện tại
-And the admin can see requestId, subjectType, requester info, and history
-
-#### UI Scope
-
-- Action menu
-- Detail side panel or view
-- Read-only data sections
-
-#### Frontend Considerations
-
-- State management: selected request, detail fetch state
-- Validation: none beyond display
-- Error handling: detail load error with retry
-- Reusability: reuse existing detail panel templates
-- Accessibility: focus trap if using modal/panel
-
-#### Hidden Requirements
-
-- Need loading and error states for detail panel
-- Different subjectType may require dynamic content rendering
-
-#### Dependency
-
-- Backend API: GET /api/approval-requests/{requestId}
-- Other FE stories: list base data
-
-#### Story Point
-
-S
+→ Xem [PDHS_US4.md](PDHS_US4.md), [PDHS_US6.md](PDHS_US6.md)
 
 ---
 
-#### Story 2.2
+## Câu hỏi cần khách hàng xác nhận
 
-As a Web Admin
-I want to approve or reject a request with a mandatory rejection note when rejecting
-So that the decision process is documented and transparent
-
-#### Acceptance Criteria
-
-Given the admin opens a request detail
-When they choose Reject
-Then a confirmation modal appears with a required note field
-And rejection submits only when the note is provided
-
-#### UI Scope
-
-- Approve/Reject buttons
-- Confirmation modal
-- Required note textarea
-- Success/error toast
-
-#### Frontend Considerations
-
-- State management: action state, modal visibility, form values
-- Validation: required rejectionReason when rejecting
-- Error handling: show server error message if action fails
-- Reusability: modal and form controls
-- Accessibility: announce validation errors
-
-#### Hidden Requirements
-
-- Reject action implies mandatory note and confirmation dialog
-- Approve action may need optimistic update or status refresh
-
-#### Dependency
-
-- Backend API: POST /api/approval-requests/{requestId}/decision
-- Permission system: approval decision permission
-
-#### Story Point
-
-M
-
----
-
-#### Story 2.3
-
-As a Web Admin
-I want to view details for both facility and service package approval requests in the same panel
-So that I can inspect the correct object-specific fields for each approval type
-
-#### Acceptance Criteria
-
-Given the admin opens a facility approval request detail
-When the detail panel loads
-Then it shows hồ sơ cơ sở-specific fields and metadata
-
-Given the admin opens a service package approval request detail
-When the detail panel loads
-Then it shows gói dịch vụ-specific fields and package-related data
-
-#### UI Scope
-
-- Detail side panel or panel view
-- Dynamic field groups per approval type
-- Read-only object-specific sections
-
-#### Frontend Considerations
-
-- State management: selected request, requestType, detail mapping
-- Validation: none beyond display and field mapping
-- Error handling: detail load error with retry
-- Reusability: same panel structure with requestType-driven content
-- Accessibility: clear labels for object-specific sections
-
-#### Hidden Requirements
-
-- Detail panel must map requestType to the correct field layout
-- Package approval and facility approval use the same panel but different section sets
-
-#### Dependency
-
-- Backend API: GET /api/approval-requests/{requestId}
-- Other FE stories: list base data
-
-#### Story Point
-
-S
+1. Data correction: trường nào được phép sửa khi phê duyệt?
+2. Khác biệt hiển thị hồ sơ cơ sở vs gói dịch vụ ngoài cột "Đối tượng xét duyệt"?
+3. Phân quyền admin trong module phê duyệt?

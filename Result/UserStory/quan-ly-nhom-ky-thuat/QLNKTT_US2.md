@@ -1,41 +1,43 @@
 # User Story: QLNKTT_US2
 
-As a Web Admin
-I want to open a modal to create or edit a technical group
-So that I can update group details without leaving the module
+| Trường | Giá trị |
+|--------|---------|
+| **Module** | Quản lý Nhóm kỹ thuật |
+| **Epic** | 2 — Thao tác nhóm |
+| **Pages** | 37 |
+| **REQ IDs** | REQ-TG-002 |
+| **Điểm ước lượng** | M (≈2–3 ngày) |
 
-#### Acceptance Criteria
+## Câu chuyện
 
-Given the admin clicks Add Group or Edit on a row
-When the modal opens
-Then form fields appear for name, description và status
-And submitting the form saves the group
+**Với vai trò** Quản trị Web Admin  
+**Tôi muốn** tạo hoặc chỉnh sửa nhóm kỹ thuật qua modal  
+**Để** cập nhật thông tin nhóm mà không rời module
 
-#### UI Scope
+## Tiêu chí chấp nhận
 
-- Add Group button
-- Edit action button
+- **Cho trước** admin nhấn "Thêm nhóm" hoặc "Chỉnh sửa"  
+- **Khi** modal mở ra  
+- **Thì** hiển thị form: tên, mô tả, trạng thái  
+- **Và** lưu thành công cập nhật dữ liệu nhóm  
+- **Và** cảnh báo nếu đóng modal còn thay đổi chưa lưu
+
+## Phạm vi giao diện
+
+- Nút Thêm nhóm / Chỉnh sửa
 - Modal form
-- Save/Cancel controls
+- Nút Lưu / Hủy
 
-#### Frontend Considerations
+## Lưu ý triển khai
 
-- State management: modal visibility, form state
-- Validation: required name, max length
-- Error handling: field errors and save failure messages
-- Reusability: reuse modal and form patterns
-- Accessibility: form labels and focus trap
+- Tái sử dụng modal từ Quản lý Danh mục  
+- Kiểm tra tên trùng lặp `[GIẢ ĐỊNH]`
 
-#### Hidden Requirements
+## Phụ thuộc
 
-- Need dirty-state warning if closing modal with unsaved changes
-- Need duplicate name validation before submit
+- API: `POST /api/technical-groups`, `PUT /api/technical-groups/{id}` `[CHƯA RÕ]`
+- QLNKTT_US1 (danh sách)
 
-#### Dependency
+## Ngoài phạm vi
 
-- Backend API: POST /api/technical-groups, PUT /api/technical-groups/{groupId}
-- Permission system: create/edit technical group permission
-
-#### Story Point
-
-M
+- Import nhóm kỹ thuật từ file

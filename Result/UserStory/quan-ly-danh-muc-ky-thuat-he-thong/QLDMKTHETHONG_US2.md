@@ -1,47 +1,51 @@
 # User Story: QLDMKTHETHONG_US2
 
-As a Web Admin
-I want to upload an Excel file and see validation results
-So that I can fix data issues before saving
+| Trường | Giá trị |
+|--------|---------|
+| **Module** | Quản lý DMKT Hệ thống |
+| **Epic** | 2 — Upload Excel và preview |
+| **Pages** | 38, 40, 41 |
+| **REQ IDs** | REQ-DMKT-002, REQ-DMKT-003, REQ-DMKT-005 |
+| **Điểm ước lượng** | L (≈4–6 ngày) |
 
-#### Acceptance Criteria
+## Câu chuyện
 
-Given the admin uploads an Excel file
-When validation completes
-Then the UI shows preview rows và error messages per row
+**Với vai trò** Quản trị Web Admin  
+**Tôi muốn** upload file Excel và xem kết quả kiểm tra dữ liệu  
+**Để** phát hiện lỗi và sửa trước khi lưu
 
-#### UI Scope
+## Tiêu chí chấp nhận
 
-- Upload button
-- File chooser
-- Preview panel
-- Error tooltip per row
+- **Cho trước** admin đã chọn nhóm kỹ thuật  
+- **Khi** upload file Excel và hệ thống kiểm tra xong  
+- **Thì** mở side panel preview hiển thị dữ liệu đã kiểm tra  
+- **Và** hiển thị lỗi theo từng dòng — hover để xem lý do `[ĐÃ XÁC NHẬN]`  
+- **Và** chỉ cho phép preview khi kiểm tra thành công `[ĐÃ XÁC NHẬN]`
 
-#### Frontend Considerations
-- State management: upload file, validation status, preview rows
-- Validation: display row-level errors and file-level errors
-- Error handling: show upload/validation failure alerts
-- Reusability: shared file upload component
-- Accessibility: file input label and error announcements
+## Phạm vi giao diện
 
-#### Hidden Requirements
+- Nút upload file
+- Chọn file Excel
+- Side panel preview
+- Tooltip lỗi trên từng dòng
 
-- Upload implies client/server validation and row-level error mapping
-- Need confirm before closing preview if upload is unsaved
+## Lưu ý triển khai
 
-### Open Questions
+- Luồng: Chọn nhóm → Upload → Validate → Preview → Lưu → Refresh bảng `[ĐÃ XÁC NHẬN]`  
+- Hiển thị tiến trình upload với file lớn `[GIẢ ĐỊNH]`
 
-- Size of files
-- Structure data need to follow standard
-- How to identify the mismatch field
-- The rules for error detecting
+## Phụ thuộc
 
-#### Dependency
+- API: `POST /api/technical-categories/upload` `[CHƯA RÕ]`
+- QLDMKTHETHONG_US1 (chọn nhóm)
 
-- Backend API: POST /api/technical-categories/upload
+## Câu hỏi cần khách xác nhận
 
-#### Story Point
+1. Cấu trúc cột file Excel mẫu?
+2. Giới hạn dung lượng file?
+3. Quy tắc phát hiện lỗi từng trường?
+4. Lưu ghi đè toàn bộ hay merge từng dòng?
 
-XL
+## Ngoài phạm vi
 
----
+- Tự tạo file Excel mẫu từ hệ thống

@@ -1,40 +1,42 @@
 # User Story: QLNKTT_US1
 
-As a Web Admin
-I want to view a table of technical groups
-So that I can inspect group data and take action quickly
+| Trường | Giá trị |
+|--------|---------|
+| **Module** | Quản lý Nhóm kỹ thuật |
+| **Epic** | 1 — Danh sách nhóm |
+| **Pages** | 36 |
+| **REQ IDs** | REQ-TG-001 |
+| **Điểm ước lượng** | S (≈0,5–1,5 ngày) |
 
-#### Acceptance Criteria
+## Câu chuyện
 
-Given the admin opens the technical group management page
-When the page loads
-Then a table appears with groupId, name, description, status, và actions
+**Với vai trò** Quản trị Web Admin  
+**Tôi muốn** xem danh sách nhóm kỹ thuật dạng bảng  
+**Để** kiểm tra dữ liệu và thực hiện thao tác nhanh
 
-#### UI Scope
+## Tiêu chí chấp nhận
 
-- Table
-- Action column
-- Status indicator
+- **Cho trước** admin mở trang Quản lý nhóm kỹ thuật  
+- **Khi** trang được tải  
+- **Thì** hiển thị bảng với: mã nhóm, tên, mô tả, trạng thái, thao tác  
+- **Và** tái sử dụng giao diện tương tự Quản lý danh mục `[ĐÃ XÁC NHẬN]`
 
-#### Frontend Considerations
+## Phạm vi giao diện
 
-- State management: table data, selected row
-- Validation: render values safely
-- Error handling: display load failure
-- Reusability: shared table component
-- Accessibility: semantic table and focus support
+- Bảng danh sách
+- Cột thao tác
+- Hiển thị trạng thái
 
-#### Hidden Requirements
+## Lưu ý triển khai
 
-- Need empty state when no technical groups exist
-- Need loading state during fetch
+- Clone cấu hình từ module Quản lý Danh mục  
+- Hiển thị trạng thái trống và loading
 
-#### Dependency
+## Phụ thuộc
 
-- Backend API: GET /api/technical-groups
-- Permission system: technical group management permission
+- API: `GET /api/technical-groups` `[CHƯA RÕ]`
+- Quản lý Danh mục (template UI)
 
-#### Story Point
+## Ngoài phạm vi
 
-S
-
+- Liên kết chi tiết với từng danh mục kỹ thuật `[CHƯA RÕ]`

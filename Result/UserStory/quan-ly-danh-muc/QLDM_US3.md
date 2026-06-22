@@ -1,37 +1,42 @@
 # User Story: QLDM_US3
 
-As a Web Admin
-I want to create a new category from the management page
-So that I can expand the category catalogue without leaving the module
+| Trường | Giá trị |
+|--------|---------|
+| **Module** | Quản lý Danh mục |
+| **Epic** | 2 — Thao tác danh mục |
+| **Pages** | 35 |
+| **REQ IDs** | REQ-CAT-002 |
+| **Điểm ước lượng** | M (≈2–3 ngày) |
 
-#### Acceptance Criteria
+## Câu chuyện
 
-Given the admin clicks Add Category
-When the create modal opens
-Then blank inputs appear và the admin can submit a new category
+**Với vai trò** Quản trị Web Admin  
+**Tôi muốn** tạo danh mục mới từ trang quản lý  
+**Để** mở rộng danh mục mà không cần rời module
 
-#### UI Scope
+## Tiêu chí chấp nhận
 
-- Add Category button
-- Create modal
-- Form fields
+- **Cho trước** admin nhấn "Thêm danh mục"  
+- **Khi** modal tạo mới mở ra  
+- **Thì** hiển thị form trống để nhập thông tin  
+- **Và** lưu thành công tạo danh mục mới  
+- **Và** hiển thị lỗi nếu tên trùng hoặc thiếu trường bắt buộc
 
-#### Frontend Considerations
+## Phạm vi giao diện
 
-- State management: create form state
-- Validation: required fields và duplicate name check
-- Error handling: show creation errors
-- Reusability: reuse edit modal component
+- Nút Thêm danh mục
+- Modal form tạo mới
 
-#### Hidden Requirements
+## Lưu ý triển khai
 
-- Create action implies validation for duplicate names and consistent status default
+- Dùng chung modal với luồng chỉnh sửa (QLDM_US2)  
+- Giá trị trạng thái mặc định khi tạo `[CHƯA RÕ]`
 
-#### Dependency
+## Phụ thuộc
 
-- Backend API: POST /api/categories
-- Permission system: create category permission
+- API: `POST /api/categories` `[CHƯA RÕ]`
+- QLDM_US2 (modal form)
 
-#### Story Point
+## Ngoài phạm vi
 
-M
+- Tạo danh mục con (phân cấp)

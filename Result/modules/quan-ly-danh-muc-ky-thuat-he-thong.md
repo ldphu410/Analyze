@@ -1,166 +1,125 @@
-# Module: Quản lý danh mục kỹ thuật hệ thống
+# Module: Quản lý DMKT Hệ thống
 
-## Nội dung chính
-Module Quản lý danh mục kỹ thuật hệ thống xử lý luồng từ chọn nhóm kỹ thuật, upload file Excel, validate, preview dữ liệu, lưu cập nhật và chỉnh sửa dữ liệu trên bảng quản lý chính.
+| Trường | Giá trị |
+|--------|---------|
+| **Pages** | 38–43 |
+| **Ước lượng FE** | ~12,0 ngày |
+| **User Story** | QLDMKTHETHONG_US1 – QLDMKTHETHONG_US4 |
+| **Phụ thuộc** | [Quản lý Nhóm kỹ thuật](quan-ly-nhom-ky-thuat.md) — dropdown nguồn dữ liệu |
+
+## Tổng quan
+
+Module phức tạp nhất Phase 1: chọn nhóm kỹ thuật → upload Excel → validate → preview → lưu → chỉnh sửa trên bảng chính.
 
 ## Page liên quan
-- Page 38: Tổng quan luồng danh mục kỹ thuật hệ thống.
-- Page 39: Bảng chi tiết full của dữ liệu nhóm kỹ thuật.
-- Page 40: Side panel upload file và confirm khi tắt.
-- Page 41: Bảng chi tiết side panel với tooltip lỗi.
-- Page 42: Chỉnh sửa danh mục kỹ thuật bảng chính.
-- Page 43: Action và modal cho bảng quản lý chính.
 
-## Image Analysis (auto-generated)
+| Page | Nội dung |
+|------|----------|
+| 38 | Tổng quan luồng DMKT |
+| 39 | Bảng chi tiết đầy đủ + checkbox "Nhóm thêm nhanh" |
+| 40 | Side panel upload + popup xác nhận khi đóng |
+| 41 | Bảng preview trong side panel + tooltip lỗi |
+| 42 | Chỉnh sửa DMKT trên bảng chính |
+| 43 | Thao tác và modal bảng chính |
 
-- Page 38:
-  - 38.1.png
-  - 38.2.png
-- Page 39:
-  - 39.1.png
-- Page 40:
-  - 40.1.png
-  - 40.2.png
-  - 40.3.png
-- Page 41:
-  - 41.1.png
-- Page 42:
-  - 42.1.png
-- Page 43:
-  - 43.1.png
+## Yêu cầu chức năng
 
-> Note: review each image and fill UI Elements / Visual cues accordingly.
-## Requirement được phát hiện
-| ID | Requirement | Loại | Actor liên quan | Mức độ rõ ràng |
-|---|---|---|---|---|
-| REQ-DMKT-001 | Cho phép chọn nhóm kỹ thuật và hiển thị dữ liệu tương ứng. | Functional | Admin | Clear |
-| REQ-DMKT-002 | Upload file Excel để cập nhật danh mục kỹ thuật. | Functional | Admin | Clear |
-| REQ-DMKT-003 | Validate file trước khi preview. | Functional | Admin | Clear |
-| REQ-DMKT-004 | Khi tắt side panel upload, hiển thị popup confirm. | Business Rule | Admin | Clear |
-| REQ-DMKT-005 | Tooltip lỗi hiển thị lý do khi hover dòng lỗi. | Functional | Admin | Clear |
-| REQ-DMKT-006 | Lưu cập nhật phải refresh bảng chính. | Functional | Admin | Clear |
-| REQ-DMKT-007 | Chỉnh sửa danh mục kỹ thuật trên bảng quản lý chính. | Functional | Admin | Clear |
-| REQ-DMKT-008 | Action và modal cho bảng chính phải tồn tại. | Functional | Admin | Clear |
-| REQ-DMKT-009 | Chỉ DMKT đánh dấu "Nhóm thêm nhanh" mới xuất hiện trong chức năng thêm nhanh trên Web Chuyên gia. | Business Rule | Admin | Clear |
+| ID | Mô tả | Loại | Mức độ |
+|---|---|---|---|
+| REQ-DMKT-001 | Chọn nhóm kỹ thuật và hiển thị dữ liệu tương ứng | Chức năng | Rõ |
+| REQ-DMKT-002 | Upload file Excel cập nhật DMKT | Chức năng | Rõ |
+| REQ-DMKT-003 | Validate file trước khi preview | Chức năng | Rõ |
+| REQ-DMKT-004 | Đóng side panel upload → popup xác nhận | Quy tắc | Rõ |
+| REQ-DMKT-005 | Tooltip lỗi khi hover dòng lỗi | Chức năng | Rõ |
+| REQ-DMKT-006 | Lưu cập nhật → refresh bảng chính | Chức năng | Rõ |
+| REQ-DMKT-007 | Chỉnh sửa DMKT trên bảng chính | Chức năng | Rõ |
+| REQ-DMKT-008 | Thao tác và modal trên bảng chính | Chức năng | Rõ |
+| REQ-DMKT-009 | Chỉ DMKT tick "Nhóm thêm nhanh" mới hiện trên Web Chuyên gia | Quy tắc | Rõ |
 
-## Business Rule
-- BR-DMKT-001: Dropdown nhóm kỹ thuật là nguồn dữ liệu duy nhất của page.
-- BR-DMKT-002: Bảng chính hiển thị dữ liệu của nhóm kỹ thuật được chọn.
-- BR-DMKT-003: Upload chỉ được preview khi validate thành công.
-- BR-DMKT-004: Tắt side panel upload phải hiển thị popup confirm.
-- BR-DMKT-005: Tooltip lỗi phải hiển thị lý do lỗi khi hover.
-- BR-DMKT-006: Chỉ DMKT được tick "Nhóm thêm nhanh" mới xuất hiện khi thêm nhanh trên Web Chuyên gia.
+## Quy tắc nghiệp vụ
 
-## Dữ liệu liên quan
-| Data Object | Field / Attribute | Mô tả | Bắt buộc? | Ghi chú |
-|---|---|---|---|---|
-| TechnicalCategory | categoryId | ID danh mục kỹ thuật | Yes | |
-| TechnicalCategory | groupId | Nhóm kỹ thuật | Yes | |
-| TechnicalCategory | name | Tên danh mục kỹ thuật | Yes | |
-| TechnicalCategory | quickAddFlag | Nhóm thêm nhanh | No | Checkbox hiển thị trên Web Chuyên gia |
-| ExcelUpload | fileName | Tên file upload | Yes | |
-| ExcelUpload | validationStatus | Trạng thái validate | Yes | |
-| ExcelUpload | previewRows | Dữ liệu preview | No | |
-| ValidationError | row | Dòng lỗi | Yes | |
-| ValidationError | message | Lý do lỗi | Yes | |
+- BR-DMKT-001 `[ĐÃ XÁC NHẬN]`: Dropdown nhóm kỹ thuật là nguồn dữ liệu duy nhất của trang.
+- BR-DMKT-002 `[ĐÃ XÁC NHẬN]`: Bảng hiển thị dữ liệu của nhóm đang chọn.
+- BR-DMKT-003 `[ĐÃ XÁC NHẬN]`: Chỉ preview khi validate thành công.
+- BR-DMKT-004 `[ĐÃ XÁC NHẬN]`: Đóng side panel upload phải popup xác nhận.
+- BR-DMKT-005 `[ĐÃ XÁC NHẬN]`: Tooltip hiển thị lý do lỗi khi hover.
+- BR-DMKT-006 `[ĐÃ XÁC NHẬN]`: Chỉ DMKT tick "Nhóm thêm nhanh" mới xuất hiện khi thêm nhanh trên Web Chuyên gia.
 
-## Actor / Role liên quan
-- Actor: Admin Web Admin
-- Vai trò: Quản lý danh mục kỹ thuật hệ thống.
-- Quyền/hành động:
-  - Chọn nhóm kỹ thuật.
-  - Upload file Excel.
-  - Xem preview dữ liệu.
-  - Lưu dữ liệu.
-  - Chỉnh sửa bảng chính.
+## Dữ liệu liên quan `[GIẢ ĐỊNH]`
 
-## Assumption
-- File upload dùng định dạng Excel chuẩn.
-- Upload không lưu nếu validate chưa thành công.
-- Preview side panel là bước bắt buộc.
-- Bảng chính có thể chỉnh sửa bổ sung sau khi lưu.
+| Đối tượng | Trường | Mô tả | Bắt buộc |
+|---|---|---|---|
+| TechnicalCategory | categoryId | ID DMKT | Có |
+| TechnicalCategory | groupId | Nhóm kỹ thuật | Có |
+| TechnicalCategory | name | Tên DMKT | Có |
+| TechnicalCategory | quickAddFlag | Nhóm thêm nhanh | Không |
+| ExcelUpload | fileName | Tên file | Có |
+| ExcelUpload | validationStatus | Trạng thái validate | Có |
+| ValidationError | row | Dòng lỗi | Có |
+| ValidationError | message | Lý do lỗi | Có |
 
-## Open Questions
-- Định dạng Excel cụ thể là gì?
-- Upload có ghi đè toàn bộ dữ liệu hay cập nhật từng dòng?
-- Có cần rollback khi lưu thất bại không?
-- Trường nào được phép chỉnh sửa trên bảng chính?
+## Vai trò sử dụng
 
-## Mermaid diagrams
-### Use Case Diagram
-```mermaid
-flowchart TD
-  Admin -->|Chọn nhóm kỹ thuật| SelectGroup
-  Admin -->|Upload Excel| Upload
-  Admin -->|Xem preview| Preview
-  Admin -->|Lưu dữ liệu| Save
-  Admin -->|Chỉnh sửa bảng| EditTable
-```
+- **Người dùng:** Admin Web Admin
+- **Thao tác:** Chọn nhóm, upload Excel, xem preview, lưu, chỉnh sửa bảng
 
-### Business Flow Diagram
+## Giả định
+
+- File Excel theo định dạng chuẩn (chưa có template từ khách).
+- Không lưu nếu validate chưa thành công.
+- Preview là bước bắt buộc trước khi lưu.
+
+## Câu hỏi cần khách xác nhận
+
+1. Template Excel: cấu trúc cột và rule validate?
+2. Upload ghi đè toàn bộ hay merge từng dòng?
+3. Có cần rollback khi lưu thất bại?
+4. Trường nào được phép sửa trên bảng chính?
+
+## Luồng nghiệp vụ
+
 ```mermaid
 flowchart LR
-  SelectGroup --> Table[Hiển thị bảng]
+  SelectGroup[Chọn nhóm] --> Table[Bảng dữ liệu]
   Table --> Upload[Upload Excel]
-  Upload --> Validate[Validate file]
-  Validate --> Preview[Preview dữ liệu]
-  Preview --> Save[Lưu dữ liệu]
+  Upload --> Validate[Validate]
+  Validate --> Preview[Preview]
+  Preview --> Save[Lưu]
   Save --> Refresh[Refresh bảng]
 ```
 
-### Sequence Diagram
-```mermaid
-sequenceDiagram
-  participant Admin
-  participant WebAdmin
-  participant Backend
-  Admin->>WebAdmin: Chọn nhóm kỹ thuật
-  WebAdmin->>Backend: Lấy dữ liệu bảng
-  Admin->>WebAdmin: Upload file Excel
-  WebAdmin->>Backend: Gửi file validate
-  Backend->>WebAdmin: Trả kết quả validate và preview
-  Admin->>WebAdmin: Xác nhận lưu
-  WebAdmin->>Backend: Lưu dữ liệu
-  Backend->>WebAdmin: Trả kết quả
-```
+## Phân tích khoảng trống
 
-### Module Dependency Diagram
-```mermaid
-flowchart LR
-  SelectGroup --> Table
-  Table --> Upload
-  Upload --> Preview
-  Preview --> Save
-  Save --> Refresh
-```
-
-## Gap Analysis
-- Chưa rõ định dạng Excel và cấu trúc trường dữ liệu.
+- Chưa có template Excel và cấu trúc cột.
 - Chưa xác định ghi đè hay merge khi lưu.
 - Chưa có yêu cầu rollback hoặc lịch sử thay đổi.
 
-## Đề xuất kiến trúc sơ bộ
-- Frontend: dropdown nhóm kỹ thuật, bảng dữ liệu, upload file, preview, modal confirm, bảng chỉnh sửa.
-- Backend: API lấy dữ liệu theo nhóm kỹ thuật, API validate upload, API lưu dữ liệu, API chỉnh sửa bảng.
-- Data: bảng `technical_categories`, bảng `technical_category_groups`, bảng `excel_uploads`, bảng `validation_errors`.
+## Hạng mục triển khai (giao diện)
 
-## Hidden requirements & Edge cases
-- Excel template: cần xác nhận exact columns và `validation rules` (type, format, required fields) trước khi triển khai.
-- Large uploads: backend có thể xử lý streaming/async validation; frontend phải hiển thị upload `progress` và xử lý partial results.
-- Merge vs overwrite: cần quyết định semantic khi lưu previewed data (overwrite toàn bộ hay upsert/mapping theo key).
-- Error reporting: ánh xạ lỗi validate theo dòng (row) để UI hiển thị Retry/Ignore/Skip từng row rõ ràng.
-- Concurrency: xử lý trường hợp người dùng khác chỉnh sửa bảng chính trong khi upload/preview đang progress.
+| Hạng mục | Quy mô | Ước lượng |
+|----------|--------|-----------|
+| Dropdown nhóm + bảng DMKT + chỉnh sửa inline | M | 2–3 ngày |
+| Upload Excel + validate + progress | L | 4–6 ngày |
+| Side panel preview + tooltip lỗi + xác nhận đóng | M | 2–3 ngày |
 
-## Implementation breakdown (frontend tasks)
-- [UI][Medium] `GroupSelector` + `TechnicalCategoryTable` với inline edit. Est: 2–3d
-- [Feature][Large] `ExcelUploader` with client-side pre-checks, upload progress, and server validation handling. Est: 4–6d
-- [UI][Medium] `UploadPreviewPanel` hiển thị validated rows, error tooltips và selective apply. Est: 2–3d
+## Yêu cầu bổ sung `[GIẢ ĐỊNH]`
 
-<!-- Note: Integration, testing, and accessibility tasks intentionally excluded from this breakdown per request. -->
+- Hiển thị tiến trình upload với file lớn.
+- Ánh xạ lỗi validate theo từng dòng.
 
-## FE Estimate (single senior FE)
-- Sum (mid ranges): 10d
-- Contingency 20%: 2d
-- Total FE estimate: ~12d
+## Ước lượng FE (1 Senior)
 
-```
+| Hạng mục | Ngày |
+|----------|------|
+| Tổng (mid) | 10,0 |
+| Dự phòng 20% | 2,0 |
+| **Tổng cộng** | **~12,0** |
+
+## User Story
+
+| ID | Tên | Điểm |
+|----|-----|------|
+| QLDMKTHETHONG_US1 | Chọn nhóm và hiển thị bảng DMKT | M |
+| QLDMKTHETHONG_US2 | Upload Excel và preview | L |
+| QLDMKTHETHONG_US3 | Xác nhận trước khi đóng panel preview | S |
+| QLDMKTHETHONG_US4 | Chỉnh sửa trên bảng chính | M |

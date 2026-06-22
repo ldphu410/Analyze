@@ -1,42 +1,44 @@
 # User Story: QLB_US1
 
-As a Web Admin
-I want to view banners grouped by platform
-So that I can quickly find the banner I need to update
+| Trường | Giá trị |
+|--------|---------|
+| **Module** | Quản lý Banner |
+| **Epic** | 1 — Danh sách banner |
+| **Pages** | 4 |
+| **REQ IDs** | REQ-BN-001 |
+| **Điểm ước lượng** | S (≈0,5–1,5 ngày) |
 
-#### Acceptance Criteria
+## Câu chuyện
 
-Given the admin opens the banner management page
-When the page loads
-Then a list or table of banners appears grouped by platform
-And each banner row shows image preview, title, link, platform, và status
+**Với vai trò** Quản trị Web Admin  
+**Tôi muốn** xem danh sách banner theo từng nền tảng  
+**Để** nhanh chóng tìm banner cần cập nhật
 
-#### UI Scope
+## Tiêu chí chấp nhận
 
-- Table or card list
-- Platform filter/grouping
-- Image preview
-- Action button to edit
+- **Cho trước** admin mở trang Quản lý banner  
+- **Khi** trang được tải  
+- **Thì** hiển thị danh sách/bảng banner nhóm theo nền tảng (4 nền tảng) `[ĐÃ XÁC NHẬN]`  
+- **Và** mỗi dòng hiển thị: ảnh preview, tiêu đề, link, nền tảng, trạng thái  
+- **Và** hiển thị trạng thái trống khi chưa có banner
 
-#### Frontend Considerations
+## Phạm vi giao diện
 
-- State management: selected platform, list data
-- Validation: none beyond display
-- Error handling: show banner if load fails
-- Reusability: use existing list component
-- Accessibility: image alt text and keyboard focus
+- Bảng hoặc danh sách card
+- Nhóm/lọc theo nền tảng
+- Preview ảnh banner
+- Nút chỉnh sửa
 
-#### Hidden Requirements
+## Lưu ý triển khai
 
-- Need empty state khi không có banner
-- Need loading state cho danh sách
+- Tái sử dụng component danh sách hiện có  
+- Hiển thị loading khi đang tải dữ liệu
 
-#### Dependency
+## Phụ thuộc
 
-- Backend API: GET /api/banners
-- Permission system: banner management permission
+- API: `GET /api/banners` `[CHƯA RÕ]`
+- Quyền: quản lý banner
 
-#### Story Point
+## Ngoài phạm vi
 
-S
-
+- Tạo banner mới, xóa banner `[GIẢ ĐỊNH — chưa thấy trên UI]`

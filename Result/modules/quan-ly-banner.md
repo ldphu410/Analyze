@@ -1,119 +1,102 @@
-# Module: Quản lý banner
+# Module: Quản lý Banner
 
-## Nội dung chính
-Module Quản lý banner quản lý danh sách banner trên bốn nền tảng khác nhau và cung cấp chức năng cập nhật nội dung banner.
+| Trường | Giá trị |
+|--------|---------|
+| **Pages** | 4–5 |
+| **Ước lượng FE** | ~5,4 ngày |
+| **User Story** | QLB_US1 – QLB_US3 |
+
+## Tổng quan
+
+Quản lý banner hiển thị trên **4 nền tảng** `[ĐÃ XÁC NHẬN]` và cập nhật nội dung banner.
 
 ## Page liên quan
-- Page 4: Quản lý banner cho 4 nền tảng.
-- Page 5: Màn hình cập nhật banner.
 
-## Image Analysis (auto-generated)
+| Page | Nội dung |
+|------|----------|
+| 4 | Danh sách banner theo nền tảng |
+| 5 | Màn hình cập nhật banner |
 
-- Page 4:
-  - 4.1.png
-- Page 5:
-  - 5.1.png
+## Yêu cầu chức năng
 
-> Note: review each image and fill UI Elements / Visual cues accordingly.
+| ID | Mô tả | Loại | Mức độ |
+|---|---|---|---|
+| REQ-BN-001 | Hiển thị danh sách banner theo 4 nền tảng | Chức năng | Rõ |
+| REQ-BN-002 | Cập nhật nội dung banner | Chức năng | Rõ |
+| REQ-BN-003 | Tái sử dụng cấu trúc UI hiện có | Quy tắc | Rõ |
 
+## Quy tắc nghiệp vụ
 
-## Requirement được phát hiện
-| ID | Requirement | Loại | Actor liên quan | Mức độ rõ ràng |
-|---|---|---|---|---|
-| REQ-BN-001 | Hiển thị danh sách banner theo 4 nền tảng. | Functional | Admin | Clear |
-| REQ-BN-002 | Cho phép cập nhật nội dung banner. | Functional | Admin | Clear |
-| REQ-BN-003 | UI phải sử dụng lại cấu trúc hiện có. | Business Rule | Admin/FE | Clear |
+- BR-BN-001 `[GIẢ ĐỊNH]`: Banner liên kết với nền tảng hiển thị cụ thể.
+- BR-BN-002: Hiển thị kết quả thành công hoặc lỗi sau khi cập nhật.
+- BR-BN-003 `[ĐÃ XÁC NHẬN]`: Nếu có xóa, phải popup xác nhận.
 
-## Business Rule
-- BR-BN-001: Banner phải liên kết với nền tảng hiển thị cụ thể.
-- BR-BN-002: Mọi cập nhật banner cần hiển thị kết quả thành công hoặc lỗi.
-- BR-BN-003: Nếu có chức năng xóa, phải xác nhận với popup.
+## Dữ liệu liên quan `[GIẢ ĐỊNH]`
 
-## Dữ liệu liên quan
-| Data Object | Field / Attribute | Mô tả | Bắt buộc? | Ghi chú |
-|---|---|---|---|---|
-| Banner | bannerId | ID banner | Yes | Khoá chính |
-| Banner | platform | Nền tảng hiển thị | Yes | 4 nền tảng |
-| Banner | imageUrl | URL ảnh banner | Yes | |
-| Banner | title | Tiêu đề banner | No | |
-| Banner | link | Link banner | No | |
-| Banner | status | Trạng thái hiển thị | No | |
+| Đối tượng | Trường | Mô tả | Bắt buộc |
+|---|---|---|---|
+| Banner | bannerId | ID banner | Có |
+| Banner | platform | Nền tảng hiển thị | Có |
+| Banner | imageUrl | URL ảnh | Có |
+| Banner | title | Tiêu đề | Không |
+| Banner | link | Link đích | Không |
+| Banner | status | Trạng thái hiển thị | Không |
 
-## Actor / Role liên quan
-- Actor: Admin Web Admin
-- Vai trò: Quản lý nội dung banner.
-- Quyền/hành động:
-  - Xem danh sách banner.
-  - Chọn và cập nhật banner.
-  - Lưu thay đổi banner.
+## Vai trò sử dụng
 
-## Assumption
-- Không có yêu cầu tạo mới hoặc xóa banner rõ ràng.
-- Banner chỉ hiển thị trên 4 nền tảng cố định.
-- UI cập nhật banner tái sử dụng từ hệ thống cũ.
+- **Người dùng:** Admin Web Admin
+- **Thao tác:** Xem danh sách, chọn và cập nhật banner
 
-## Open Questions
-- 4 nền tảng là những nền tảng nào?
-- Có cần hỗ trợ nhiều kích thước ảnh banner không?
-- Có cần lên lịch hiển thị banner không?
-- Có cần bật/tắt từng banner không?
+## Giả định
 
-## Mermaid diagrams
-### Use Case Diagram
-```mermaid
-flowchart TD
-  Admin -->|Xem banner| List
-  Admin -->|Cập nhật banner| Update
-```
+- Chưa thấy yêu cầu tạo mới hoặc xóa banner trên UI.
+- 4 nền tảng là cố định.
+- Form cập nhật tái sử dụng từ hệ thống cũ.
 
-### Business Flow Diagram
+## Câu hỏi cần khách xác nhận
+
+1. 4 nền tảng cụ thể là gì?
+2. Kích thước và định dạng ảnh banner?
+3. Có cần lên lịch hiển thị banner không?
+4. Có cần bật/tắt từng banner không?
+
+## Luồng nghiệp vụ
+
 ```mermaid
 flowchart LR
-  List[Danh sách banner] --> Update[Cập nhật banner]
-  Update --> Save[Lưu thay đổi]
+  List[Danh sách banner] --> Update[Cập nhật]
+  Update --> Save[Lưu]
 ```
 
-### Sequence Diagram
-```mermaid
-sequenceDiagram
-  participant Admin
-  participant WebAdmin
-  participant Backend
-  Admin->>WebAdmin: Mở quản lý banner
-  WebAdmin->>Backend: Lấy danh sách banner
-  Admin->>WebAdmin: Cập nhật banner
-  WebAdmin->>Backend: Lưu dữ liệu
-```
+## Phân tích khoảng trống
 
-### Module Dependency Diagram
-```mermaid
-flowchart LR
-  List --> Update
-  Update --> Backend
-```
+- Chưa rõ tên 4 nền tảng.
+- Chưa xác định có chức năng tạo/xóa banner.
 
-## Gap Analysis
-- Chưa rõ 4 nền tảng cụ thể.
-- Chưa biết có cần chức năng tạo/xóa banner.
+## Hạng mục triển khai (giao diện)
 
-## Đề xuất kiến trúc sơ bộ
-- Frontend: bảng banner, form cập nhật, xác nhận lưu.
-- Backend: API lấy banner, API cập nhật banner.
-- Data: bảng `banners`.
+| Hạng mục | Quy mô | Ước lượng |
+|----------|--------|-----------|
+| Danh sách banner + lọc nền tảng | S | 1,5–2,5 ngày |
+| Form chỉnh sửa + upload ảnh + preview | S | 2–3 ngày |
 
-## Hidden requirements & Edge cases
-- Image upload: phải hỗ trợ nhiều kích thước, `max file size` và `aspect ratio` rõ ràng; validate trước khi upload.
-- Preview cho 4 platforms: cần responsive preview/placeholder cho từng platform (desktop/mobile/tablet) và khả năng switch preview.
-- Atomic update: đảm bảo rollback/transactional behavior nếu phần upload hoặc update fail để tránh inconsistent state.
+## Yêu cầu bổ sung & ngoài phạm vi
 
-## Implementation breakdown (frontend tasks)
-- [UI][Small] `BannerList` component với platform filter. Est: 1.5–2.5d
-- [UI][Small] `BannerEditForm` gồm image uploader và platform preview. Est: 2–3d
+- `[GIẢ ĐỊNH]` Kiểm tra file ảnh trước upload, preview theo nền tảng.
+- `[NGOÀI PHẠM VI]` Lên lịch hiển thị — xem [README.md](../README.md).
 
-<!-- Note: Integration, testing, and accessibility tasks intentionally excluded from this breakdown per request. -->
+## Ước lượng FE (1 Senior)
 
-## FE Estimate (single senior FE)
-- Sum (mid ranges): 4.5d
-- Contingency 20%: 0.9d
-- Total FE estimate: ~5.4d
+| Hạng mục | Ngày |
+|----------|------|
+| Tổng (mid) | 4,5 |
+| Dự phòng 20% | 0,9 |
+| **Tổng cộng** | **~5,4** |
 
+## User Story
+
+| ID | Tên | Điểm |
+|----|-----|------|
+| QLB_US1 | Danh sách banner theo nền tảng | S |
+| QLB_US2 | Chỉnh sửa nội dung banner | M |
+| QLB_US3 | Kiểm tra file ảnh trước khi lưu | S |

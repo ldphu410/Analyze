@@ -1,40 +1,42 @@
 # User Story: QLDM_US1
 
-As a Web Admin
-I want to view the category list in a table
-So that I can inspect category data before editing
+| Trường | Giá trị |
+|--------|---------|
+| **Module** | Quản lý Danh mục |
+| **Epic** | 1 — Danh sách danh mục |
+| **Pages** | 34 |
+| **REQ IDs** | REQ-CAT-001 |
+| **Điểm ước lượng** | S (≈0,5–1,5 ngày) |
 
-#### Acceptance Criteria
+## Câu chuyện
 
-Given the admin opens the category management page
-When the page loads
-Then a table with categoryId, name, description, status, và actions appears
+**Với vai trò** Quản trị Web Admin  
+**Tôi muốn** xem danh sách danh mục lớn dạng bảng  
+**Để** kiểm tra dữ liệu trước khi chỉnh sửa
 
-#### UI Scope
+## Tiêu chí chấp nhận
 
-- Table
-- Action menu
-- Status badge
+- **Cho trước** admin mở trang Quản lý danh mục  
+- **Khi** trang được tải  
+- **Thì** hiển thị bảng với: mã danh mục, tên, mô tả, trạng thái, thao tác  
+- **Và** hiển thị trạng thái trống khi chưa có danh mục
 
-#### Frontend Considerations
+## Phạm vi giao diện
 
-- State management: list data, selected row
-- Validation: render category fields safely
-- Error handling: show load error message
-- Reusability: existing table component
-- Accessibility: semantic table markup
+- Bảng danh sách
+- Menu thao tác
+- Badge trạng thái
 
-#### Hidden Requirements
+## Lưu ý triển khai
 
-- Need empty state when no categories present
-- Need loading skeleton khi truy vấn dữ liệu
+- Tái sử dụng component bảng hiện có  
+- Hiển thị loading khi đang tải
 
-#### Dependency
+## Phụ thuộc
 
-- Backend API: GET /api/categories
-- Permission system: category management permission
+- API: `GET /api/categories` `[CHƯA RÕ]`
+- Quyền: quản lý danh mục
 
-#### Story Point
+## Ngoài phạm vi
 
-S
-
+- Cây danh mục nhiều cấp `[GIẢ ĐỊNH]`

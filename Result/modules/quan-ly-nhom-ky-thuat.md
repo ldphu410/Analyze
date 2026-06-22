@@ -1,113 +1,96 @@
-# Module: Quản lý nhóm kỹ thuật
+# Module: Quản lý Nhóm kỹ thuật
 
-## Nội dung chính
-Module Quản lý nhóm kỹ thuật tái sử dụng UI và modal của Quản lý danh mục. Page 36-37 mô tả bảng và hành động modal tương tự module danh mục.
+| Trường | Giá trị |
+|--------|---------|
+| **Pages** | 36–37 |
+| **Ước lượng FE** | ~2,5 ngày |
+| **User Story** | QLNKTT_US1 – QLNKTT_US2 |
+| **Phụ thuộc** | [Quản lý Danh mục](quan-ly-danh-muc.md) — tái sử dụng template UI |
+
+## Tổng quan
+
+Quản lý nhóm kỹ thuật với giao diện và modal tương tự Quản lý Danh mục `[ĐÃ XÁC NHẬN]`. Estimate giảm ~40% nhờ reuse.
 
 ## Page liên quan
-- Page 36: Bảng quản lý nhóm kỹ thuật.
-- Page 37: Action và modal cho nhóm kỹ thuật.
 
-## Image Analysis (auto-generated)
+| Page | Nội dung |
+|------|----------|
+| 36 | Bảng quản lý nhóm kỹ thuật |
+| 37 | Thao tác và modal nhóm kỹ thuật |
 
-- Page 36:
-  - 36.1.png
-- Page 37:
-  - 37.1.png
+## Yêu cầu chức năng
 
-> Note: review each image and fill UI Elements / Visual cues accordingly.
+| ID | Mô tả | Loại | Mức độ |
+|---|---|---|---|
+| REQ-TG-001 | Hiển thị bảng quản lý nhóm kỹ thuật | Chức năng | Rõ |
+| REQ-TG-002 | Thao tác nhóm kỹ thuật qua modal | Chức năng | Rõ |
+| REQ-TG-003 | Tái sử dụng UI Quản lý Danh mục | Quy tắc | Rõ |
 
+## Quy tắc nghiệp vụ
 
-## Requirement được phát hiện
-| ID | Requirement | Loại | Actor liên quan | Mức độ rõ ràng |
-|---|---|---|---|---|
-| REQ-TG-001 | Hiển thị bảng quản lý nhóm kỹ thuật. | Functional | Admin | Clear |
-| REQ-TG-002 | Cho phép thao tác nhóm kỹ thuật bằng modal. | Functional | Admin | Clear |
-| REQ-TG-003 | UI phải tái sử dụng cấu trúc quản lý danh mục. | Business Rule | Admin/FE | Clear |
+- BR-TG-001 `[ĐÃ XÁC NHẬN]`: UI và modal tương tự Quản lý Danh mục.
+- BR-TG-002: Thao tác mở qua modal xác nhận hoặc chỉnh sửa.
+- BR-TG-003: Dữ liệu nhóm hiển thị rõ ràng trên bảng.
 
-## Business Rule
-- BR-TG-001: Nhóm kỹ thuật sử dụng UI và modal tương tự quản lý danh mục.
-- BR-TG-002: Action phải mở modal xác nhận hoặc chỉnh sửa.
-- BR-TG-003: Dữ liệu nhóm kỹ thuật phải hiển thị rõ ràng.
+## Dữ liệu liên quan `[GIẢ ĐỊNH]`
 
-## Dữ liệu liên quan
-| Data Object | Field / Attribute | Mô tả | Bắt buộc? | Ghi chú |
-|---|---|---|---|---|
-| TechnicalGroup | groupId | ID nhóm kỹ thuật | Yes | |
-| TechnicalGroup | name | Tên nhóm kỹ thuật | Yes | |
-| TechnicalGroup | description | Mô tả nhóm | No | |
-| TechnicalGroup | isActive | Trạng thái hoạt động | No | |
+| Đối tượng | Trường | Mô tả | Bắt buộc |
+|---|---|---|---|
+| TechnicalGroup | groupId | ID nhóm | Có |
+| TechnicalGroup | name | Tên nhóm | Có |
+| TechnicalGroup | description | Mô tả | Không |
+| TechnicalGroup | isActive | Trạng thái hoạt động | Không |
 
-## Actor / Role liên quan
-- Actor: Admin Web Admin
-- Vai trò: Quản lý nhóm kỹ thuật.
-- Quyền/hành động:
-  - Xem danh sách nhóm.
-  - Mở modal thao tác.
-  - Lưu/cập nhật nhóm kỹ thuật.
+## Vai trò sử dụng
 
-## Assumption
-- Nhóm kỹ thuật là cấu hình bổ sung cho danh mục kỹ thuật.
-- Modal và bảng dùng chung template UI.
+- **Người dùng:** Admin Web Admin
+- **Thao tác:** Xem danh sách, mở modal, lưu/cập nhật nhóm
 
-## Open Questions
-- Nhóm kỹ thuật có liên kết danh mục kỹ thuật khác không?
-- Có cần phân quyền riêng cho nhóm kỹ thuật không?
-- Có cần chức năng thêm nhanh hay chỉ CRUD đơn giản?
+## Giả định
 
-## Mermaid diagrams
-### Use Case Diagram
-```mermaid
-flowchart TD
-  Admin -->|Xem nhóm kỹ thuật| List
-  Admin -->|Thao tác nhóm| Modal
-```
+- Nhóm kỹ thuật là cấu hình bổ sung cho DMKT.
+- Bảng và modal dùng chung template với Quản lý Danh mục.
 
-### Business Flow Diagram
+## Câu hỏi cần khách xác nhận
+
+1. Nhóm kỹ thuật liên kết với danh mục kỹ thuật như thế nào?
+2. Có cần phân quyền riêng cho nhóm kỹ thuật không?
+
+## Luồng nghiệp vụ
+
 ```mermaid
 flowchart LR
-  List[Danh sách nhóm kỹ thuật] --> Modal[Modal thao tác]
+  List[Danh sách nhóm] --> Modal[Modal thao tác]
+  Modal --> Save[Lưu]
 ```
 
-### Sequence Diagram
-```mermaid
-sequenceDiagram
-  participant Admin
-  participant WebAdmin
-  participant Backend
-  Admin->>WebAdmin: Mở quản lý nhóm kỹ thuật
-  WebAdmin->>Backend: Mở modal
-  WebAdmin->>Backend: Lưu dữ liệu
-```
+## Phân tích khoảng trống
 
-### Module Dependency Diagram
-```mermaid
-flowchart LR
-  List --> Modal
-  Modal --> Backend
-```
-
-## Gap Analysis
-- Chưa rõ mối quan hệ nhóm kỹ thuật và danh mục kỹ thuật.
+- Chưa rõ mối quan hệ nhóm kỹ thuật và DMKT.
 - Chưa xác định phạm vi CRUD đầy đủ.
 
-## Đề xuất kiến trúc sơ bộ
-- Frontend: bảng nhóm kỹ thuật, modal thao tác.
-- Backend: API nhóm kỹ thuật.
-- Data: bảng `technical_groups`.
+## Hạng mục triển khai (giao diện)
 
-## Hidden requirements & Edge cases
-- Mối quan hệ với categories: nhóm có thể cần tham chiếu `category IDs` — cần làm rõ data model.
-- Bulk operations/import: có thể cần import nhóm hoặc bulk edit; UI/UX phải hỗ trợ thao tác hàng loạt.
+| Hạng mục | Quy mô | Ước lượng |
+|----------|--------|-----------|
+| Bảng nhóm kỹ thuật (clone từ Danh mục) | S | 1–1,5 ngày |
+| Modal thêm/sửa (clone từ Danh mục) | S | 0,5–1 ngày |
 
-## Implementation breakdown (frontend tasks)
-- [UI][Small] `TechnicalGroupList` table và action column. Est: 1.5–2d
-- [UI][Small] `TechnicalGroupModal` cho create/edit. Est: 1–1.5d
+## Yêu cầu bổ sung & ngoài phạm vi
 
-<!-- Note: Integration, testing, and accessibility tasks intentionally excluded from this breakdown per request. -->
+- `[NGOÀI PHẠM VI]` Import nhóm, thao tác hàng loạt.
 
-## FE Estimate (single senior FE)
-- Sum (mid ranges): 3d
-- Contingency 20%: 0.6d
-- Total FE estimate: ~3.6d
+## Ước lượng FE (1 Senior)
 
-```
+| Hạng mục | Ngày |
+|----------|------|
+| Tổng (mid) | 2,1 |
+| Dự phòng 20% | 0,4 |
+| **Tổng cộng** | **~2,5** |
+
+## User Story
+
+| ID | Tên | Điểm |
+|----|-----|------|
+| QLNKTT_US1 | Danh sách nhóm kỹ thuật | S |
+| QLNKTT_US2 | Tạo / chỉnh sửa nhóm (modal) | M |

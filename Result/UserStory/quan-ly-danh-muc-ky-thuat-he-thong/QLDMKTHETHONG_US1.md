@@ -1,41 +1,44 @@
 # User Story: QLDMKTHETHONG_US1
 
-As a Web Admin
-I want to select a technical group and display its data in a table
-So that I can manage the correct group dataset
+| Trường | Giá trị |
+|--------|---------|
+| **Module** | Quản lý DMKT Hệ thống |
+| **Epic** | 1 — Chọn nhóm và hiển thị bảng |
+| **Pages** | 38, 39 |
+| **REQ IDs** | REQ-DMKT-001, REQ-DMKT-009 |
+| **Điểm ước lượng** | M (≈2–3 ngày) |
 
-#### Acceptance Criteria
+## Câu chuyện
 
-Given the admin opens the technical category module
-When they select a group
-Then the table refreshes with data for that group
-And the selected group is highlighted
+**Với vai trò** Quản trị Web Admin  
+**Tôi muốn** chọn nhóm kỹ thuật và xem dữ liệu DMKT tương ứng trên bảng  
+**Để** quản lý đúng bộ dữ liệu của từng nhóm
 
-#### UI Scope
+## Tiêu chí chấp nhận
 
-- Group selector dropdown
-- Data table
-- Table action column
+- **Cho trước** admin mở module Danh mục kỹ thuật hệ thống  
+- **Khi** chọn một nhóm kỹ thuật từ dropdown  
+- **Thì** bảng bên dưới hiển thị dữ liệu của nhóm đó `[ĐÃ XÁC NHẬN]`  
+- **Và** nhóm đang chọn được đánh dấu rõ ràng  
+- **Và** hiển thị cột checkbox "Nhóm thêm nhanh" — chỉ DMKT được tick mới xuất hiện khi thêm nhanh trên Web Chuyên gia `[ĐÃ XÁC NHẬN]`
 
-#### Frontend Considerations
+## Phạm vi giao diện
 
-- State management: selected group, table rows
-- Validation: valid group selection
-- Error handling: show group load error
-- Reusability: shared select and table components
-- Accessibility: dropdown labels and keyboard navigation
+- Dropdown chọn nhóm kỹ thuật
+- Bảng dữ liệu DMKT
+- Cột thao tác
+- Checkbox "Nhóm thêm nhanh"
 
-#### Hidden Requirements
+## Lưu ý triển khai
 
-- Group selector implies source data load for options
-- Need empty state if group has no rows
+- Dropdown là nguồn dữ liệu duy nhất của trang `[ĐÃ XÁC NHẬN]`  
+- Hiển thị trạng thái trống khi nhóm không có dữ liệu
 
-#### Dependency
+## Phụ thuộc
 
-- Backend API: GET /api/technical-groups, GET /api/technical-categories?groupId=
-- Permission system: technical category view permission
+- API: `GET /api/technical-groups`, `GET /api/technical-categories?groupId=` `[CHƯA RÕ]`
+- Quản lý Nhóm kỹ thuật (danh sách nhóm)
 
-#### Story Point
+## Ngoài phạm vi
 
-M
-
+- Quản lý nhóm kỹ thuật trên cùng màn hình

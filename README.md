@@ -1,194 +1,147 @@
-# 📋 Bản Trình Bày Sơ Bộ Dự Án Web Admin
+# Bản trình bày sơ bộ — Web Admin Y VIET Phase 1
 
-**Phiên bản:** 1.0  
-**Ngày cập nhật:** Tháng 6, 2026  
-**Trạng thái:** ✅ Sẵn sàng Review  
+| | |
+|---|---|
+| **Phiên bản** | 1.1 |
+| **Ngày cập nhật** | Tháng 6, 2026 |
+| **Trạng thái** | Draft estimate — chờ khách hàng review |
+| **Đầu vào** | UI mockup (43 pages), chưa có business details đầy đủ |
 
----
-
-## 🎯 Mục Tiêu Của Hệ Thống
-
-Hệ thống **Web Admin** là một nền tảng quản lý toàn diện dành cho các quản trị viên, cho phép họ:
-
-- ✅ **Phê duyệt hồ sơ và gói dịch vụ** từ người dùng với quy trình kiểm soát chất lượng đầy đủ
-- ✅ **Quản lý danh mục và cấu hình** hệ thống (danh mục, nhóm kỹ thuật, banner)
-- ✅ **Quản lý tài khoản người dùng** và phân quyền cho các operator
-- ✅ **Quản lý quản trị viên** với phân quyền chi tiết
-- ✅ **Cập nhật nội dung động** như banner trên nhiều nền tảng
+> Tài liệu chi tiết: [Result/README.md](./Result/README.md) · [Ước lượng](./Result/estimate-summary.md) · [Ánh xạ Page → Module](./Result/module-groups.md)
 
 ---
 
-## 📦 Tóm Tắt Phạm Vi
+## Mục tiêu hệ thống
 
-| Chỉ Tiêu | Con Số |
-|---------|-------|
-| **Tổng Số Module** | **8 modules** |
-| **Tổng Số Epic** | **21 epics** |
-| **Tổng Số User Stories** | **36 stories** |
-| **Tổng Số Requirements** | **48 requirements** |
+Web Admin là nền tảng quản lý dành cho quản trị viên, hỗ trợ:
 
----
+- Phê duyệt hồ sơ cơ sở và gói dịch vụ
+- Quản lý tài khoản người dùng (trạng thái duyệt, khóa/tạm khóa)
+- Quản lý quản trị viên (QTV) và phân quyền
+- Quản lý danh mục, nhóm kỹ thuật, DMKT hệ thống
+- Cập nhật banner trên 4 nền tảng
 
-## 📂 Danh Sách Các Module
-👉 **[Xem Tài Liệu Đầy Đủ Về Overview Requirement](./Result/modules)**
-
-👉 **[Xem Tài Liệu Đầy Đủ Về User Stories](./Result/UserStory)**
-
-| # | Module | Mô Tả | Epic | Story |
-|---|--------|-------|------|-------|
-| 1 | **Phê Duyệt Hồ Sơ & Gói Dịch Vụ** | Xử lý luồng duyệt/từ chối hồ sơ cơ sở và gói dịch vụ | 2 | 5 |
-| 2 | **Quản Lý QTV** | Tạo, sửa, xóa, gán quyền cho quản trị viên | 5 | 11 |
-| 3 | **Quản Lý Danh Sách Tài Khoản** | Hiển thị tài khoản user, khóa/tạm khóa, xem lý do từ chối | 3 | 4 |
-| 4 | **Quản Lý Loại Hình Dịch Vụ** | Hiển thị panel read-only cho nhiều loại đối tượng dịch vụ | 2 | 4 |
-| 5 | **Quản Lý Danh Mục** | Hiển thị, tạo, sửa danh mục lớn | 2 | 3 |
-| 6 | **Quản Lý Nhóm Kỹ Thuật** | Tạo, sửa nhóm kỹ thuật, tái sử dụng UI danh mục | 2 | 2 |
-| 7 | **Quản Lý Banner** | Hiển thị, cập nhật banner trên 4 nền tảng | 2 | 3 |
-| 8 | **Quản Lý Danh Mục Kỹ Thuật** | Upload Excel, validate, preview, chỉnh sửa dữ liệu | 3 | 4 |
+Giao diện tái sử dụng component từ **Web Chuyên Gia** `[ĐÃ XÁC NHẬN]`.
 
 ---
 
-## 📑 Nội Dung Chính
+## Tóm tắt phạm vi
 
-### 1️⃣ Phê Duyệt Hồ Sơ & Gói Dịch Vụ (Module 1)
-
-**Mục tiêu:** Cung cấp giao diện quản lý yêu cầu phê duyệt với quy trình duyệt/từ chối rõ ràng
-
-**Chức năng chính:**
-- Xem danh sách yêu cầu (bảng, pagination)
-- Lọc theo loại yêu cầu và trạng thái
-- Xem chi tiết yêu cầu (hỗ trợ hồ sơ cơ sở & gói dịch vụ)
-- Duyệt hoặc từ chối với lý do bắt buộc
-- Cập nhật trạng thái đồng bộ admin/user
-
-**User Stories:** 5 stories  
-**Priority:** High
+| Chỉ tiêu | Con số |
+|----------|--------|
+| Số page UI | 43 |
+| Module (gồm 1 lớp dùng chung) | 8 |
+| Epic | 21 |
+| User Story | 34 |
+| Yêu cầu chức năng (REQ) | 46 |
+| Ước lượng FE (1 Senior) | **~55 ngày** |
 
 ---
 
-### 2️⃣ Quản Lý QTV (Module 2)
+## Danh sách module
 
-**Mục tiêu:** Quản lý toàn bộ tài khoản quản trị viên với phân quyền chi tiết
+👉 [Đặc tả module](./Result/modules/) · [User Story](./Result/UserStory/)
 
-**Chức năng chính:**
-- Danh sách, tìm kiếm, lọc QTV
-- Xem chi tiết, thêm, sửa, xóa QTV
-- Gán multi-select roles
-- Xem effective permissions
+| # | Module | Pages | Mô tả | Story |
+|---|--------|-------|-------|-------|
+| 0 | **Side Panel dùng chung** | 9–19, 24–32 | Thư viện panel tái sử dụng — chế độ xem & phê duyệt | — |
+| 1 | **Quản lý QTV** | 1–3 | Danh sách, thêm/sửa/xóa, phân quyền QTV | 11 |
+| 2 | **Quản lý Banner** | 4–5 | Banner trên 4 nền tảng | 3 |
+| 3 | **Quản lý Tài khoản** | 6–19 | Danh sách user, khóa/tạm khóa, side panel read-only (a→k) | 5 |
+| 4 | **Phê duyệt Hồ sơ & Gói DV** | 20–33 | Duyệt/từ chối, đồng bộ trạng thái admin/user | 6 |
+| 5 | **Quản lý Danh mục** | 34–35 | Danh mục lớn — bảng và modal CRUD | 3 |
+| 6 | **Quản lý Nhóm kỹ thuật** | 36–37 | Nhóm kỹ thuật — reuse UI Danh mục | 2 |
+| 7 | **Quản lý DMKT Hệ thống** | 38–43 | Upload Excel, validate, preview, chỉnh sửa bảng | 4 |
 
-**User Stories:** 11 stories  
-**Priority:** High
-
----
-
-### 3️⃣ Quản Lý Danh Sách Tài Khoản (Module 3)
-
-**Mục tiêu:** Quản lý trạng thái tài khoản user
-
-**Chức năng chính:**
-- Danh sách tài khoản với lọc
-- Xem chi tiết (read-only)
-- Xem lý do từ chối
-- Khóa/tạm khóa tài khoản
-
-**User Stories:** 4 stories  
-**Priority:** High
+**Lưu ý:** Page 10–19 (side panel a→k) thuộc **Quản lý Tài khoản**, không phải module riêng. Estimate panel nằm ở module **Side Panel dùng chung** (~4 ngày), tránh tính trùng.
 
 ---
 
-### 4️⃣ Quản Lý Loại Hình Dịch Vụ (Module 4)
+## Tóm tắt từng module
 
-**Mục tiêu:** Xem chi tiết dịch vụ ở chế độ read-only trong Web Admin
+### Phê duyệt Hồ sơ & Gói DV
 
-**Chức năng chính:**
-- Hiển thị 10+ loại panel chi tiết
-- Ẩn button hành động
-- Ẩn section không cần thiết
-- Bỏ icon xóa trên ảnh
+- Danh sách 2 luồng: hồ sơ cơ sở và gói dịch vụ (UI giống nhau)
+- Lọc theo loại và trạng thái
+- Side panel chi tiết theo loại đối tượng + chỉnh sửa dữ liệu `[CHƯA RÕ]`
+- Duyệt / từ chối — lý do bắt buộc khi từ chối `[ĐÃ XÁC NHẬN]`
+- Đồng bộ trạng thái giữa Web Admin và Web Chuyên gia của user `[ĐÃ XÁC NHẬN]`
 
-**User Stories:** 4 stories  
-**Priority:** Medium
+### Quản lý QTV
 
----
+- Danh sách có phân trang, tìm kiếm, lọc
+- Thêm / sửa / xóa (popup xác nhận khi xóa)
+- Gán vai trò (multi-select), xem trước quyền
 
-### 5️⃣ Quản Lý Danh Mục (Module 5)
+### Quản lý Tài khoản
 
-**Mục tiêu:** Quản lý danh mục lớn hệ thống
+- Danh sách tài khoản, menu thao tác theo trạng thái duyệt
+- Xem lý do từ chối, popup khóa/tạm khóa
+- 11 loại side panel read-only (Bảo mật → Chi tiết gói DV)
 
-**Chức năng chính:**
-- Danh sách danh mục
-- Tạo, sửa danh mục
-- Xóa danh mục (xác nhận)
+### Quản lý Danh mục · Nhóm kỹ thuật · Banner · DMKT
 
-**User Stories:** 3 stories  
-**Priority:** Medium
-
----
-
-### 6️⃣ Quản Lý Nhóm Kỹ Thuật (Module 6)
-
-**Mục tiêu:** Cấu hình nhóm kỹ thuật
-
-**Chức năng chính:**
-- Danh sách nhóm kỹ thuật
-- Tạo, sửa nhóm
-- Tái sử dụng UI từ Module 5
-
-**User Stories:** 2 stories  
-**Priority:** Medium
+- **Danh mục / Nhóm KT:** CRUD qua bảng + modal
+- **Banner:** danh sách theo nền tảng, cập nhật ảnh/nội dung
+- **DMKT:** chọn nhóm → upload Excel → validate → preview → lưu → sửa bảng (module phức tạp nhất)
 
 ---
 
-### 7️⃣ Quản Lý Banner (Module 7)
+## Ước lượng effort (draft)
 
-**Mục tiêu:** Cập nhật banner không cần dev
+| Hạng mục | Ngày (tham khảo) |
+|----------|------------------|
+| Giao diện (FE, 1 Senior) | ~55 |
+| Backend `[GIẢ ĐỊNH]` | ~38–52 |
+| Dự phòng khi có business spec | +15–20% |
 
-**Chức năng chính:**
-- Danh sách banner (4 nền tảng)
-- Cập nhật nội dung banner
-- Preview trước lưu
-
-**User Stories:** 3 stories  
-**Priority:** Medium
+Chi tiết từng module: [estimate-summary.md](./Result/estimate-summary.md)
 
 ---
 
-### 8️⃣ Quản Lý Danh Mục Kỹ Thuật (Module 8)
+## Ngoài phạm vi (Phase 1)
 
-**Mục tiêu:** Import hàng loạt danh mục kỹ thuật
-
-**Chức năng chính:**
-- Chọn nhóm kỹ thuật, hiển thị bảng
-- Upload file Excel
-- Validate dữ liệu, hiển thị lỗi
-- Preview trước lưu
-- Chỉnh sửa trực tiếp bảng
-
-**User Stories:** 4 stories  
-**Priority:** High
+- Audit trail / lịch sử thay đổi quyền
+- Thao tác hàng loạt (bulk)
+- Lên lịch hiển thị banner
+- Gửi thông báo push/email khi duyệt/từ chối
+- Import/export CSV danh mục
 
 ---
 
-## 🔍 10 Câu Hỏi Cần Khách Hàng Xác Nhận
+## Câu hỏi cần khách hàng xác nhận
 
-1. ❓ **Phê Duyệt Data Correction:** Được phép sửa dữ liệu trước khi approve lại?
-2. ❓ **Lịch Sử Phê Duyệt:** Cần lưu audit trail?
-3. ❓ **Phân Quyền Chi Tiết:** Cấu trúc role/permission?
-4. ❓ **Khóa vs Tạm Khóa:** Khác biệt chi tiết?
-5. ❓ **Tìm Kiếm Toàn Text:** Tìm ngoài tên/email?
-6. ❓ **4 Nền Tảng Banner:** Là gì?
-7. ❓ **Upload Excel Strategy:** Overwrite hay merge?
-8. ❓ **Effective Permissions:** Backend hay client-side?
-9. ❓ **Bulk Operations:** Hỗ trợ bulk actions?
-10. ❓ **Notification:** User nhận thông báo khi status thay đổi?
-11. ❓ **Upload files:** Max size là bao nhiêu?
+1. Chỉnh sửa dữ liệu khi phê duyệt: trường nào được sửa?
+2. Có cần lưu lịch sử phê duyệt (audit trail)?
+3. Ma trận phân quyền QTV: theo role hay permission chi tiết?
+4. Khóa vs tạm khóa: khác nhau thế nào? Có tự mở khóa?
+5. Danh sách trạng thái duyệt tài khoản và quy tắc chuyển trạng thái?
+6. 4 nền tảng banner là gì? Kích thước/định dạng ảnh?
+7. Template Excel DMKT: cấu trúc cột và rule validate?
+8. Upload DMKT: ghi đè toàn bộ hay merge từng dòng?
+9. Giới hạn dung lượng file upload?
+10. Có cần gửi thông báo cho user khi trạng thái thay đổi?
+
+---
+
+## Bước tiếp theo
+
+1. **Workshop với khách** — xác nhận câu hỏi trên và business rules
+2. **Chốt phạm vi** — sign-off requirement draft
+3. **Estimation chi tiết** — sau khi có business spec
+4. **Phát triển & kiểm thử** — theo sprint plan
 
 ---
 
-## 🚀 Bước Tiếp Theo
+## Cấu trúc repository
 
-1. ✅ **Xác Nhận Phạm Vi** (sign-off requirements)
-2. 📋 **Estimation & Planning** (dev team)
-3. 💻 **Phát Triển & Testing** (dev/QA team)
-4. 🚢 **Release & Training** (deployment)
-
----
+```
+Analyze/
+├── Requirement/          # UI mockup từ khách (Page 1–43)
+├── Result/
+│   ├── modules/          # Đặc tả từng module
+│   ├── UserStory/        # User story + backlog
+│   ├── module-groups.md
+│   └── estimate-summary.md
+└── README.md             # Tài liệu này
+```

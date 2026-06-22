@@ -1,39 +1,41 @@
 # User Story: QLQTV_US11
 
-As a Web Admin
-I want the list and forms to respect permission gating
-So that I only see actions I am allowed to perform
+| Trường | Giá trị |
+|--------|---------|
+| **Module** | Quản lý QTV |
+| **Epic** | 5 — Thao tác chung |
+| **Pages** | 1–3 |
+| **REQ IDs** | — |
+| **Điểm ước lượng** | M (≈2–3 ngày) |
 
-#### Acceptance Criteria
+## Câu chuyện
 
-Given the admin has limited permissions
-When they view the module
-Then unavailable actions are hidden or disabled
-And a permission error is not exposed in the UI
+**Với vai trò** Quản trị Web Admin  
+**Tôi muốn** chỉ thấy các thao tác mà tôi được phép thực hiện  
+**Để** giao diện gọn và tránh thao tác không hợp lệ
 
-#### UI Scope
+## Tiêu chí chấp nhận
 
-- Action menu
-- Disabled buttons
-- Hidden actions
+- **Cho trước** admin đăng nhập với quyền hạn giới hạn  
+- **Khi** xem module Quản lý QTV  
+- **Thì** các thao tác không được phép sẽ bị ẩn hoặc vô hiệu hóa  
+- **Và** không hiển thị thông báo lỗi quyền gây khó hiểu cho người dùng
 
-#### Frontend Considerations
+## Phạm vi giao diện
 
-- State management: permission state, UI gating
-- Validation: enforce UI gating consistently
-- Error handling: prevent unauthorized requests proactively
-- Reusability: permission utils/service
-- Accessibility: communicate disabled actions clearly
+- Menu thao tác (ẩn / disable theo quyền)
+- Nút Thêm, Sửa, Xóa
 
-#### Hidden Requirements
+## Lưu ý triển khai
 
-- Permission gating may require separate permission metadata API
+- Kiểm tra quyền trước khi hiển thị thao tác `[GIẢ ĐỊNH]`  
+- Cần dữ liệu quyền từ session hoặc API metadata `[CHƯA RÕ]`
 
-#### Dependency
+## Phụ thuộc
 
-- Backend API: permission metadata, user session info
-- Permission system: role-based access control
+- Hệ thống phân quyền (role-based access control)
+- API metadata quyền người dùng `[CHƯA RÕ]`
 
-#### Story Point
+## Ngoài phạm vi
 
-M
+- Quản lý ma trận quyền chi tiết (permission matrix editor)

@@ -1,39 +1,43 @@
 # User Story: QLTK_US3
 
-As a Web Admin
-I want to open a read-only detail panel for account information
-So that I can inspect account details without editing them
+| Trường | Giá trị |
+|--------|---------|
+| **Module** | Quản lý Tài khoản |
+| **Epic** | 3 — Xem chi tiết tài khoản |
+| **Pages** | 9 |
+| **REQ IDs** | REQ-ACC-005, REQ-ACC-006 |
+| **Điểm ước lượng** | S (≈0,5–1,5 ngày) |
 
-#### Acceptance Criteria
+## Câu chuyện
 
-Given the admin selects View Details
-When the side panel opens
-Then it shows read-only account fields and hides edit/delete controls
+**Với vai trò** Quản trị Web Admin  
+**Tôi muốn** mở side panel xem chi tiết tài khoản ở chế độ chỉ xem  
+**Để** tra cứu thông tin mà không chỉnh sửa
 
-#### UI Scope
+## Tiêu chí chấp nhận
 
-- Detail side panel
-- Read-only fields
-- Hidden action buttons/icons
+- **Cho trước** admin chọn "Xem chi tiết" trên một tài khoản  
+- **Khi** side panel mở qua Shared Detail Panel (`mode: view-only`)  
+- **Thì** tất cả trường hiển thị ở chế độ read-only  
+- **Và** ẩn nút thao tác và icon xóa trên ảnh `[ĐÃ XÁC NHẬN]`  
+- **Và** ẩn các section không cần thiết trong tab Bảo mật `[ĐÃ XÁC NHẬN]`
 
-#### Frontend Considerations
+## Phạm vi giao diện
 
-- State management: selected account details
-- Validation: none beyond display
-- Error handling: detail load failure and retry
-- Reusability: reuse read-only panel logic
-- Accessibility: focus trap if modal/panel
+- Side panel (tích hợp Shared Detail Panel)
+- Trường chỉ xem
+- Ẩn control chỉnh sửa
 
-#### Hidden Requirements
+## Lưu ý triển khai
 
-- Need hide non-essential controls from the shared panel
-- Need support for info sections and status display
+- Không build panel mới — tích hợp `DetailPanelShell` với `mode: view-only`  
+- Tái sử dụng component từ Web Chuyên Gia
 
-#### Dependency
+## Phụ thuộc
 
-- Backend API: GET /api/user-accounts/{userId}
+- Shared Detail Panel
+- API: `GET /api/user-accounts/{userId}` `[CHƯA RÕ]`
 
-#### Story Point
+## Ngoài phạm vi
 
-S
-
+- Xây dựng layout từng loại panel (xem QLTK_US5)
